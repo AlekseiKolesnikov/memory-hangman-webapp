@@ -1,5 +1,5 @@
 $mouse-device: '(hover:hover) and (pointer: fine)';
-@import "../../../app.component";
+@import "../../../app.component.scss";
 
 //------BUTTON-ANIMATION_PATTERN---------------------------------------------------
 %button-animation {
@@ -29,13 +29,12 @@ $mouse-device: '(hover:hover) and (pointer: fine)';
 
 //------MAIN-BUTTON----------------------------------------------------
 .button-container {
-  width: 100vw;
+  width: 100%;
   height: 3.8em;
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
-
 
   .button-container__button {
     @extend %button-animation;
@@ -46,9 +45,21 @@ $mouse-device: '(hover:hover) and (pointer: fine)';
     font-weight: 600;
     font-size: 100%;
     color: var(--tg-theme-button-text-color);
-    background: var(--tg-theme-button-color);
+    background: black;
     border: var(--tg-theme-button-text-color) solid;
     border-radius: 1em;
     box-shadow: 0 0 0.2em black;
+  }
+}
+
+@keyframes squeeze {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+
+  100% {
+    width: 92%;
+    height: 92%;
   }
 }

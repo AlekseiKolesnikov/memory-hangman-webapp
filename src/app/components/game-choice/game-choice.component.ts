@@ -9,9 +9,4 @@ import {Component} from "@angular/core";
   ]
 })
 export class GameChoiceComponent {
-  //
-  // protected readonly Component = Component;
-  // protected readonly HostListener = HostListener;
-  //   protected readonly Component = Component;
-  // protected readonly Component = Component;
 }
