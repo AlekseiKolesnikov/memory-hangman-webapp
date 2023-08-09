@@ -1,20 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: [
+    './button.component.scss',
+    '../../../styles/patterns.scss'
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class ButtonComponent {
-  // constructor(private router: Router) {
-  // }
-  //
-  // @Input()children: string;
-  //
-  // goToComponents(direction: string): void {
-  //   this.router.navigate([direction]);
-  // }
-  //
-  // protected readonly Component = Component;
-  // protected readonly onclick = onclick;
+  @Input() buttonText: string
 }

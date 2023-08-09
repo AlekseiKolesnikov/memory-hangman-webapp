@@ -1,30 +1,9 @@
-$mouse-device: '(hover:hover) and (pointer: fine)';
-@import "../../../app.component.scss";
-
-//------BUTTON-ANIMATION_PATTERN---------------------------------------------------
-%button-animation {
-  &:hover {
-    @media #{$mouse-device} {
-      cursor: pointer;
-    }
-  }
-
-  &:active {
-    animation: squeeze 0.05s ease-out;
-    animation-fill-mode: forwards;
-  }
-}
+@import "../../../styles/patterns";
 
 //------BUTTONS----------------------------------------------------
 ._button-container {
   max-width: 50vw;
   margin: 0 auto;
-}
-
-._buttons-flex-container {
-  width: 45vw;
-  justify-content: space-between;
-  @extend %flex-column-params;
 }
 
 //------MAIN-BUTTON----------------------------------------------------
@@ -45,7 +24,7 @@ $mouse-device: '(hover:hover) and (pointer: fine)';
     font-weight: 600;
     font-size: 100%;
     color: var(--tg-theme-button-text-color);
-    background: black;
+    background: var(--tg-theme-button-color);
     border: var(--tg-theme-button-text-color) solid;
     border-radius: 1em;
     box-shadow: 0 0 0.2em black;

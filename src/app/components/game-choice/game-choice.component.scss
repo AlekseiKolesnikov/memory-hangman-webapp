@@ -1,3 +1,7 @@
+@import "src/app/styles/patterns.scss";
+
 .game-choice {
+  @extend %buttons-flex-container;
+
   height: 20vh;
 }

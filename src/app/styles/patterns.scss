@@ -1,0 +1,29 @@
+$mouse-device: '(hover:hover) and (pointer: fine)';
+
+//------FLEX-PATTERN----------------------------------------------------
+%flex-column-params {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+//------BUTTON-ANIMATION_PATTERN---------------------------------------------------
+%button-animation {
+  &:hover {
+    @media #{$mouse-device} {
+      cursor: pointer;
+    }
+  }
+
+  &:active {
+    animation: squeeze 0.05s ease-out;
+    animation-fill-mode: forwards;
+  }
+}
+
+//------FLEX-PATTERN----------------------------------------------------
+%buttons-flex-container {
+  width: 45vw;
+  justify-content: space-between;
+  @extend %flex-column-params;
+}

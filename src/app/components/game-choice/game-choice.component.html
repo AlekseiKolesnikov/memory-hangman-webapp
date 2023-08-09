@@ -1,4 +1,10 @@
-<div class="game-choice _buttons-flex-container">
-  <app-button></app-button>
-  <app-button></app-button>
+<div class="game-choice">
+  <app-button
+    (click)="onClick('/memory-levels')"
+    class="button-container _button-container"
+    buttonText="Мемори"></app-button>
+  <app-button
+    (click)="onClick('/hangman-levels')"
+    class="button-container _button-container"
+    buttonText="Виселица"></app-button>
 </div>
