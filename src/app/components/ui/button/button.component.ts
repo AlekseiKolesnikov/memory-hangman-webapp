@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -10,5 +10,10 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ButtonComponent {
-  @Input() buttonText: string
+  @Input() buttonText: string;
+  @Output() buttonClick = new EventEmitter();
+
+  public click(): void {
+    this.buttonClick.emit()
+  }
 }

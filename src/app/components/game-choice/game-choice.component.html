@@ -1,10 +1,18 @@
-<div class="game-choice">
+<div
+  class="game-choice"
+  [ngClass]="{
+    'fadeOut' : !state,
+    'fadeIn' : state
+    }"
+>
   <app-button
-    (click)="onClick('/memory-levels')"
+    (buttonClick)="onClick('/memory-levels')"
     class="button-container _button-container"
-    buttonText="Мемори"></app-button>
+    buttonText="Мемори"
+  ></app-button>
   <app-button
-    (click)="onClick('/hangman-levels')"
+    (buttonClick)="onClick('/hangman-levels')"
     class="button-container _button-container"
-    buttonText="Виселица"></app-button>
+    buttonText="Виселица"
+  ></app-button>
 </div>
