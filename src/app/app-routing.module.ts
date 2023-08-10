@@ -4,6 +4,7 @@ import {HangmanLevelsComponent} from "./components/hangman/hangman-levels/hangma
 import {MemoryLevelsComponent} from "./components/memory/memory-levels/memory-levels.component";
 import {GameChoiceComponent} from "./components/game-choice/game-choice.component";
 import {ErrorScreenComponent} from "./components/error-screen/error-screen.component";
+import {HangmanPlaygroundComponent} from "./components/hangman/hangman-playground/hangman-playground.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'memory-levels',
     component: MemoryLevelsComponent
+  },
+  {
+    path: 'hangman-playground',
+    component: HangmanPlaygroundComponent
   },
   {
     path: '',

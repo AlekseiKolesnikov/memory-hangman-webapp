@@ -8,8 +8,15 @@ import {Router} from "@angular/router";
   encapsulation: ViewEncapsulation.None
 })
 export class HangmanLevelsComponent implements OnInit {
+  state: boolean = true;
   constructor(private router: Router) {
   }
+
+  onClick(level: string): void {
+    this.state = !this.state;
+    this.router.navigate(['hangman-playground', { id: level}]);
+  }
+
   ngOnInit(): void {
     this.router.navigate(['hangman-levels']);
     console.log(this.router);

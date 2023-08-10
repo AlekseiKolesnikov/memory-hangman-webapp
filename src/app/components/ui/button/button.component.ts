@@ -3,10 +3,7 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: [
-    './button.component.scss',
-    '../../../styles/patterns.scss'
-  ],
+  styleUrls: ['./button.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ButtonComponent {

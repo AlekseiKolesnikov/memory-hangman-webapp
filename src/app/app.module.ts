@@ -8,6 +8,7 @@ import {ButtonComponent} from "./components/ui/button/button.component";
 import {HangmanLevelsComponent} from "./components/hangman/hangman-levels/hangman-levels.component";
 import {MemoryLevelsComponent} from "./components/memory/memory-levels/memory-levels.component";
 import {ErrorScreenComponent} from "./components/error-screen/error-screen.component";
+import {HangmanPlaygroundComponent} from "./components/hangman/hangman-playground/hangman-playground.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {ErrorScreenComponent} from "./components/error-screen/error-screen.compo
     ButtonComponent,
     HangmanLevelsComponent,
     MemoryLevelsComponent,
+    HangmanPlaygroundComponent,
     ErrorScreenComponent
   ],
   imports: [

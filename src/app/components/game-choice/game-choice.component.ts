@@ -4,17 +4,13 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'game-choice',
   templateUrl: './game-choice.component.html',
-  styleUrls: [
-    './game-choice.component.scss',
-    './../ui/button/button.component.scss',
-    './../../styles/transition.scss'
-  ],
+  styleUrls: ['./game-choice.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class GameChoiceComponent implements OnInit {
   state: boolean = true;
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) { }
+
   onClick(path: string) {
     this.state = !this.state;
     this.router.navigate([path]);

@@ -1,4 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,12 @@ import {Component, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'memory-hangman-webapp';
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    this.router.navigate(['game-choice']);
+    console.log(this.router);
+  }
 }
