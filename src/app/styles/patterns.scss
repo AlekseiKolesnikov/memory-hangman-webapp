@@ -9,7 +9,7 @@ $touch-device: '(hover:none)';
 }
 
 //------BUTTON-ANIMATION_PATTERN---------------------------------------------------
-%button-animation  {
+%button-animation {
   &:hover {
     @media #{$mouse-device} {
       cursor: pointer;
