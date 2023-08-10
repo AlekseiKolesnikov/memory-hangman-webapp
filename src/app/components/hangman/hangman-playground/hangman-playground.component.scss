@@ -1,0 +1,5 @@
+@import "src/app/styles/patterns.scss";
+
+.hangman-playground {
+  @extend %game-container;
+}

@@ -27,3 +27,15 @@ $mouse-device: '(hover:hover) and (pointer: fine)';
   justify-content: space-between;
   @extend %flex-column-params;
 }
+
+//--------GAME-CONTAINER-PATTERN--------------------------------------------------
+%game-container {
+  background: var(--tg-theme-bg-color);
+  max-width: 600px;
+  max-height: 900px;
+  width: 90vw;
+  height: 85vh;
+  border-radius: 1em;
+  justify-content: center;
+  @extend %flex-column-params;
+}

@@ -5,6 +5,7 @@ import {MemoryLevelsComponent} from "./components/memory/memory-levels/memory-le
 import {GameChoiceComponent} from "./components/game-choice/game-choice.component";
 import {ErrorScreenComponent} from "./components/error-screen/error-screen.component";
 import {HangmanPlaygroundComponent} from "./components/hangman/hangman-playground/hangman-playground.component";
+import {LoaderComponent} from "./components/ui/loader/loader.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'memory-levels',
     component: MemoryLevelsComponent
+  },
+  {
+    path: 'loader',
+    component: LoaderComponent
   },
   {
     path: 'hangman-playground',

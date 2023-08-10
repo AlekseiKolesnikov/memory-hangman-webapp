@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./hangman-playground.component.scss']
 })
 export class HangmanPlaygroundComponent implements OnInit {
+  loading: boolean = true;
   constructor(
     private router: Router,
     private route: ActivatedRoute
