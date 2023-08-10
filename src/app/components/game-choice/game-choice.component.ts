@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,13 +11,17 @@ import {Router} from "@angular/router";
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class GameChoiceComponent {
+export class GameChoiceComponent implements OnInit {
   state: boolean = true;
   constructor(private router: Router) {
   }
-
   onClick(path: string) {
     this.state = !this.state;
     this.router.navigate([path]);
+  }
+
+  ngOnInit(): void {
+    this.router.navigate(['game-choice']);
+    console.log(this.router);
   }
 }
