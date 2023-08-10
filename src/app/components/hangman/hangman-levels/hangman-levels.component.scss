@@ -1,0 +1,7 @@
+@import "src/app/styles/patterns.scss";
+
+.hangman-levels {
+  @extend %buttons-flex-container;
+
+  height: 30vh;
+}

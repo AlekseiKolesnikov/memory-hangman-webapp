@@ -6,10 +6,27 @@ import {GameChoiceComponent} from "./components/game-choice/game-choice.componen
 import {ErrorScreenComponent} from "./components/error-screen/error-screen.component";
 
 const routes: Routes = [
-  { path: 'game-choice', component: GameChoiceComponent },
-  { path: 'hangman-levels', component: HangmanLevelsComponent },
-  { path: 'memory-levels', component: MemoryLevelsComponent },
-  { path: '**', component: ErrorScreenComponent }
+  {
+    path: 'game-choice',
+    component: GameChoiceComponent
+  },
+  {
+    path: 'hangman-levels',
+    component: HangmanLevelsComponent
+  },
+  {
+    path: 'memory-levels',
+    component: MemoryLevelsComponent
+  },
+  {
+    path: '',
+    redirectTo: 'game-choice',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: ErrorScreenComponent
+  }
 ];
 
 @NgModule({
