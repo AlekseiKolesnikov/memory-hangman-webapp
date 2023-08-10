@@ -4,7 +4,10 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'game-choice',
   templateUrl: './game-choice.component.html',
-  styleUrls: ['./game-choice.component.scss'],
+  styleUrls: [
+    './game-choice.component.scss',
+    '../../styles/transition.scss'
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class GameChoiceComponent implements OnInit {

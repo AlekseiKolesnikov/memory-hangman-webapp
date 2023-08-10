@@ -1,4 +1,5 @@
 $mouse-device: '(hover:hover) and (pointer: fine)';
+$touch-device: '(hover:none)';
 
 //------FLEX-PATTERN----------------------------------------------------
 %flex-column-params {
@@ -8,7 +9,7 @@ $mouse-device: '(hover:hover) and (pointer: fine)';
 }
 
 //------BUTTON-ANIMATION_PATTERN---------------------------------------------------
-%button-animation {
+%button-animation  {
   &:hover {
     @media #{$mouse-device} {
       cursor: pointer;
@@ -18,6 +19,18 @@ $mouse-device: '(hover:hover) and (pointer: fine)';
   &:active {
     animation: squeeze 0.05s ease-out;
     animation-fill-mode: forwards;
+  }
+
+  @keyframes squeeze {
+    0% {
+      width: 100%;
+      height: 100%;
+    }
+
+    100% {
+      width: 92%;
+      height: 92%;
+    }
   }
 }
 
