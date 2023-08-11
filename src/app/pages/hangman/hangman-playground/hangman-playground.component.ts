@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {HandleWord} from "../../../services/random-word.service/handle-word";
-import {SetWordLength} from "../../../services/random-word.service/set-word-length";
+import {WordLength} from "../../../services/random-word.service/word-length";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -16,7 +16,7 @@ export class HangmanPlaygroundComponent implements OnInit {
   wordArray: string
   constructor(
     private handlerWord: HandleWord,
-    private setWordLength: SetWordLength,
+    private setWordLength: WordLength,
     private route: ActivatedRoute
   ) { }
 
