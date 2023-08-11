@@ -13,7 +13,7 @@ export class HangmanPlaygroundComponent implements OnInit {
   private routeSub: Subscription;
   level: string;
   loading: boolean = false;
-  wordArray: any
+  wordArray: string
   constructor(
     private handlerWord: HandleWord,
     private setWordLength: SetWordLength,
@@ -26,12 +26,13 @@ export class HangmanPlaygroundComponent implements OnInit {
       this.level = params['id'];
     })
 
-    this.wordArray = this.handlerWord.getWord(
+    this.handlerWord.getWord(
       (word) => {
         console.log(word)
         this.loading = false;
       },
       this.setWordLength.getLengths(this.level).minLength,
-      this.setWordLength.getLengths(this.level).maxLength);
+      this.setWordLength.getLengths(this.level).maxLength
+    );
   }
 }
