@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {WordService} from "../../../services/random-word.service/word.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {HandleWord} from "../../../services/random-word.service/handle-word";
+import {SetWordLength} from "../../../services/random-word.service/set-word-length";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -9,23 +10,28 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./hangman-playground.component.scss']
 })
 export class HangmanPlaygroundComponent implements OnInit {
-  routeSub: Subscription;
+  private routeSub: Subscription;
+  level: string;
   loading: boolean = false;
+  wordArray: any
   constructor(
-    private wordService: WordService,
+    private handlerWord: HandleWord,
+    private setWordLength: SetWordLength,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.loading = true;
     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params['id'])
+      this.level = params['id'];
     })
 
-    this.wordService.getWord().subscribe((word) => {
-      console.log(word)
-    })
-    this.loading = false;
+    this.wordArray = this.handlerWord.getWord(
+      (word) => {
+        console.log(word)
+        this.loading = false;
+      },
+      this.setWordLength.getLengths(this.level).minLength,
+      this.setWordLength.getLengths(this.level).maxLength);
   }
 }
-  

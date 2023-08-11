@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,8 +19,9 @@ export class AppComponent implements OnInit {
         this.currentRoute = (event as NavigationEnd).url;
         console.log(this.currentRoute);
         if (this.currentRoute === '/game-choice') {
-
+          console.log('nothing')
         } else {
+          console.log('back button')
         }
       });
   }

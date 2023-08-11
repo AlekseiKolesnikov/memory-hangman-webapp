@@ -1,6 +1,9 @@
 <div class="hangman-playground">
+  <div *ngIf="loading">
+    <app-loader/>
+  </div>
+
   <app-man/>
   <app-word/>
   <app-alphabet/>
-  <app-loader *ngIf="loading"/>
 </div>

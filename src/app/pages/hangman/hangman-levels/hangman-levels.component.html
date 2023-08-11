@@ -11,10 +11,12 @@
     buttonText="Сложный"
   />
   <app-button
+    (buttonClick)="onClick('medium')"
     class="button-container _button-container"
     buttonText="Средний"
   />
   <app-button
+    (buttonClick)="onClick('easy')"
     class="button-container _button-container"
     buttonText="Лёгкий"
   />
