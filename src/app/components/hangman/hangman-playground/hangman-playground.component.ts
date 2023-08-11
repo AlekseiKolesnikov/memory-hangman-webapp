@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {WordService} from "../../../services/random-word.service/word.service";
+import {Subscription} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -7,12 +9,22 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./hangman-playground.component.scss']
 })
 export class HangmanPlaygroundComponent implements OnInit {
-  loading: boolean = true;
+  private routeSub: Subscription;
+  loading: boolean = false;
   constructor(
-    private router: Router,
+    private wordService: WordService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.routeSub = this.route.params.subscribe(params => {
+      console.log(params['id'])
+    })
+
+    this.wordService.getWord().subscribe(word => {
+      console.log(word)
+    })
+    this.loading = false;
   }
 }

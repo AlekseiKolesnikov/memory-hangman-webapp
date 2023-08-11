@@ -10,6 +10,10 @@ import {MemoryLevelsComponent} from "./components/memory/memory-levels/memory-le
 import {ErrorScreenComponent} from "./components/error-screen/error-screen.component";
 import {HangmanPlaygroundComponent} from "./components/hangman/hangman-playground/hangman-playground.component";
 import {LoaderComponent} from "./components/ui/loader/loader.component";
+import {ManComponent} from "./components/hangman/hangman-playground/man/man.component";
+import {WordComponent} from "./components/hangman/hangman-playground/word/word.component";
+import {AlphabetComponent} from "./components/hangman/hangman-playground/alphabet/alphabet.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,11 +24,15 @@ import {LoaderComponent} from "./components/ui/loader/loader.component";
     MemoryLevelsComponent,
     LoaderComponent,
     HangmanPlaygroundComponent,
+    ManComponent,
+    WordComponent,
+    AlphabetComponent,
     ErrorScreenComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,21 +12,16 @@ import {Router} from "@angular/router";
 })
 export class HangmanLevelsComponent implements OnInit {
   state: boolean = true;
-  loading: boolean = true;
+
   constructor(private router: Router) {
   }
 
   onClick(level: string): void {
-    if (this.loading) {
-      this.state = !this.state;
-      this.router.navigate(['loader', { loading: this.loading }])
-    } else {
-      this.router.navigate(['hangman-playground', { id: level}]);
-    }
+    this.state = !this.state;
+    this.router.navigate(['hangman-playground', {id: level}]);
   }
 
   ngOnInit(): void {
     this.router.navigate(['hangman-levels']);
-    console.log(this.router);
   }
 }
