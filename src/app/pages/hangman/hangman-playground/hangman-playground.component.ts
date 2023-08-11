@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./hangman-playground.component.scss']
 })
 export class HangmanPlaygroundComponent implements OnInit {
-  private routeSub: Subscription;
+  routeSub: Subscription;
   loading: boolean = false;
   constructor(
     private wordService: WordService,
@@ -22,9 +22,10 @@ export class HangmanPlaygroundComponent implements OnInit {
       console.log(params['id'])
     })
 
-    this.wordService.getWord().subscribe(word => {
+    this.wordService.getWord().subscribe((word) => {
       console.log(word)
     })
     this.loading = false;
   }
 }
+  
