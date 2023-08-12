@@ -1,3 +1,11 @@
+.letter-container {
+  height: 1em;
+  width: 1em;
+}
 
+.letter-container__letter {
+  font-family: "Tektur", cursive;
+  font-size: 16px;
+}
 
 /*# sourceMappingURL=word.component.css.map */
