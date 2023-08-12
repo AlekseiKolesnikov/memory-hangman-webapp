@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-alphabet',
@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./alphabet.component.scss']
 })
 export class AlphabetComponent {
+  @Input() buttonText: string;
   constructor() {
   }
 }

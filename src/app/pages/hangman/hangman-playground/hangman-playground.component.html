@@ -18,7 +18,10 @@
     </div>
 
     <div class="alphabet-container">
-      <app-alphabet/>
+      <app-alphabet
+        *ngFor="let letter of alphabetArray"
+        buttonText="{{letter}}"
+      />
     </div>
 
   </div>

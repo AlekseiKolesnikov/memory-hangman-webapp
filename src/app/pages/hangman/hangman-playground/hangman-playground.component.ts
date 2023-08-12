@@ -13,6 +13,7 @@ import hangmanData from "../../../data/hangman.data/hangman-game-data";
 })
 export class HangmanPlaygroundComponent implements OnInit {
   bodyPartsArray: string[] = hangmanData.hangman;
+  alphabetArray: string[] = hangmanData.alphabet;
   private routeSub: Subscription;
   level: string;
   loading: boolean = false;
