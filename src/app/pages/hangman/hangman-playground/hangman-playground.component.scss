@@ -8,6 +8,9 @@
   position: relative;
   width: 90%;
   height: 15%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 //------ALPHABET-CONTAINER----------------------------------------------------
@@ -92,7 +95,7 @@
 .head {
   position: absolute;
   width: 12%;
-  height: 15%;
+  height: 16%;
   background: var(--tg-theme-bg-color);
   top: 19%;
   left: 44.5%;
@@ -105,7 +108,7 @@
   width: 0.3em;
   height: 35%;
   background: var(--tg-theme-text-color);
-  top: 33%;
+  top: 34%;
   left: 50%;
   border-radius: 0.2em;
 }
@@ -138,7 +141,7 @@
   height: 20%;
   background: var(--tg-theme-text-color);
   transform: rotate(-45deg);
-  top: 62%;
+  top: 63%;
   left: 55%;
   border-radius: 0.2em;
 }
@@ -149,7 +152,7 @@
   height: 20%;
   background: var(--tg-theme-text-color);
   transform: rotate(45deg);
-  top: 62%;
+  top: 63%;
   left: 45%;
   border-radius: 0.2em;
 }

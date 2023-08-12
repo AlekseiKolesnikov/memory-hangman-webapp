@@ -14,7 +14,10 @@
     </div>
 
     <div class="word-container">
-      <app-word *ngFor="let word of wordArray"/>
+      <app-word
+        *ngFor="let word of wordArray"
+        letterText="{{word}}"
+      />
     </div>
 
     <div class="alphabet-container">
