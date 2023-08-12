@@ -1,9 +1,25 @@
-<div class="hangman-playground">
+<div>
   <div *ngIf="loading">
     <app-loader/>
   </div>
 
-  <app-man/>
-  <app-word/>
-  <app-alphabet/>
+  <div
+    *ngIf="!loading"
+    class="hangman-playground">
+
+    <div class="man-container">
+      <app-man
+        *ngFor="let part of bodyPartsArray"
+        [ngClass]="part"/>
+    </div>
+
+    <div class="word-container">
+      <app-word *ngFor="let word of wordArray"/>
+    </div>
+
+    <div class="alphabet-container">
+      <app-alphabet/>
+    </div>
+
+  </div>
 </div>

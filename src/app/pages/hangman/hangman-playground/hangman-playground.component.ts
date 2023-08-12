@@ -1,19 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {HandleWord} from "../../../services/random-word.service/handle-word";
 import {WordLength} from "../../../services/random-word.service/word-length";
+import hangmanData from "../../../data/hangman.data/hangman-game-data";
 
 @Component({
   selector: 'app-hangman-playground',
   templateUrl: './hangman-playground.component.html',
-  styleUrls: ['./hangman-playground.component.scss']
+  styleUrls: ['./hangman-playground.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HangmanPlaygroundComponent implements OnInit {
+  bodyPartsArray: string[] = hangmanData.hangman;
   private routeSub: Subscription;
   level: string;
   loading: boolean = false;
-  wordArray: string
+  wordArray: string[];
   constructor(
     private handlerWord: HandleWord,
     private setWordLength: WordLength,
@@ -28,7 +31,7 @@ export class HangmanPlaygroundComponent implements OnInit {
 
     this.handlerWord.getWord(
       (word) => {
-        console.log(word)
+        this.wordArray = word;
         this.loading = false;
       },
       this.setWordLength.getLengths(this.level).minLength,

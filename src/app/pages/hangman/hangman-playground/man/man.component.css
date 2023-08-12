@@ -1,3 +1,7 @@
-
+.man-container {
+  position: relative;
+  height: 44%;
+  width: 90%;
+}
 
 /*# sourceMappingURL=man.component.css.map */
