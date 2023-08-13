@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Subscription} from "rxjs";
+import {repeat, Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {HandleWord} from "../../../services/random-word.service/handle-word";
 import {WordLength} from "../../../services/random-word.service/word-length";
@@ -19,7 +19,7 @@ export class HangmanPlaygroundComponent implements OnInit {
   loading: boolean = false;
   wordArray: string[];
   constructor(
-    private handlerWord: HandleWord,
+    private handleWord: HandleWord,
     private setWordLength: WordLength,
     private route: ActivatedRoute
   ) { }
@@ -30,7 +30,7 @@ export class HangmanPlaygroundComponent implements OnInit {
       this.level = params['id'];
     })
 
-    this.handlerWord.getWord(
+    this.handleWord.getWord(
       (word) => {
         this.wordArray = word;
         this.loading = false;
@@ -39,4 +39,6 @@ export class HangmanPlaygroundComponent implements OnInit {
       this.setWordLength.getLengths(this.level).maxLength
     );
   }
+
+  protected readonly repeat = repeat;
 }

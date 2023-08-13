@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
+import {Location} from "@angular/common";
+import MainButton from "./helpers/main-button";
 
 
 @Component({
@@ -13,15 +15,32 @@ export class AppComponent implements OnInit {
   title = 'memory-hangman-webapp';
   currentRoute: string;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private location: Location
+  ) {
     router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {
         this.currentRoute = (event as NavigationEnd).url;
-        console.log(this.currentRoute);
+        if (this.currentRoute === '/hangman-playground') {
+          // @ts-ignore
+          Telegram.WebApp.MainButton.show();
+          // @ts-ignore
+          Telegram.WebApp.MainButton.setText('Закончить Игру')
+          MainButton.setActionToMainButton(() => {
+            this.router.navigate(['game-choice'])
+          })
+        }
         if (this.currentRoute === '/game-choice') {
-          console.log('nothing')
+          // @ts-ignore
+          Telegram.WebApp.BackButton.hide()
         } else {
-          console.log('back button')
+          // @ts-ignore
+          Telegram.WebApp.BackButton.show()
+          // @ts-ignore
+          Telegram.WebApp.BackButton.onClick(() => {
+            location.back()
+          })
         }
       });
   }

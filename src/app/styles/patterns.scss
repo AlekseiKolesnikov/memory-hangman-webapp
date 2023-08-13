@@ -17,8 +17,12 @@ $touch-device: '(hover:none)';
   }
 
   &:active {
+    -webkit-animation: squeeze 0.05s ease-out;
+    -moz-animation: squeeze 0.05s ease-out;
     animation: squeeze 0.05s ease-out;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
 
   @keyframes squeeze {
@@ -38,6 +42,7 @@ $touch-device: '(hover:none)';
 %buttons-flex-container {
   width: 45vw;
   justify-content: space-between;
+  align-content: center;
   @extend %flex-column-params;
 }
 
