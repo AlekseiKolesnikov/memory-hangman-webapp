@@ -34,6 +34,14 @@ export class HangmanPlaygroundComponent implements OnInit {
       (word) => {
         this.wordArray = word;
         this.loading = false;
+        // @ts-ignore
+        Telegram.WebApp.MainButton.show();
+        // @ts-ignore
+        Telegram.WebApp.MainButton.setText('Закончить Игру')
+        // @ts-ignore
+        Telegram.WebApp.onEvent("mainButtonClicked", () => {
+
+        })
       },
       this.setWordLength.getLengths(this.level).minLength,
       this.setWordLength.getLengths(this.level).maxLength
