@@ -16,8 +16,8 @@
 .word-container-flex {
   width: 100%;
   height: 40%;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
+  justify-content: space-around;
   align-items: center;
 }
 
