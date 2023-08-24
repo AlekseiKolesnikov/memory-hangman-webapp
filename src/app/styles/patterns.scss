@@ -1,5 +1,4 @@
 $mouse-device: '(hover:hover) and (pointer: fine)';
-$touch-device: '(hover:none)';
 
 //------FLEX-PATTERN----------------------------------------------------
 %flex-column-params {
@@ -17,24 +16,8 @@ $touch-device: '(hover:none)';
   }
 
   &:active {
-    -webkit-animation: squeeze 0.05s ease-out;
-    -moz-animation: squeeze 0.05s ease-out;
     animation: squeeze 0.05s ease-out;
     animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-  }
-
-  @keyframes squeeze {
-    0% {
-      width: 100%;
-      height: 100%;
-    }
-
-    100% {
-      width: 92%;
-      height: 92%;
-    }
   }
 }
 
@@ -56,4 +39,16 @@ $touch-device: '(hover:none)';
   border-radius: 1em;
   justify-content: center;
   @extend %flex-column-params;
+}
+
+@keyframes squeeze {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+
+  100% {
+    width: 92%;
+    height: 92%;
+  }
 }

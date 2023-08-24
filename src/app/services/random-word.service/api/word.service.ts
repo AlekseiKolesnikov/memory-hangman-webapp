@@ -9,7 +9,7 @@ export class WordService {
   constructor(private http: HttpClient) {
   }
 
-  getWordData(): Observable<Object> {
-    return this.http.get<Object>('https://random-word-api.herokuapp.com/word')
+  getWordData(): Observable<object> {
+    return this.http.get<Object>('https://random-word-api.herokuapp.com/word');
   }
 }

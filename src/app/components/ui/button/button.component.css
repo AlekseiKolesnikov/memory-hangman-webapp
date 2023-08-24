@@ -4,13 +4,10 @@
   }
 }
 .button-container .button-container__button:active {
-  -webkit-animation: squeeze 0.05s ease-out;
-  -moz-animation: squeeze 0.05s ease-out;
   animation: squeeze 0.05s ease-out;
   animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
 }
+
 @keyframes squeeze {
   0% {
     width: 100%;
@@ -20,6 +17,15 @@
     width: 92%;
     height: 92%;
   }
+}
+@media (hover:hover) and (pointer: fine) {
+  .button-container .button-container__button:hover {
+    cursor: pointer;
+  }
+}
+.button-container .button-container__button:active {
+  animation: squeeze 0.05s ease-out;
+  animation-fill-mode: forwards;
 }
 
 ._button-container {
@@ -46,6 +52,12 @@
   border: var(--tg-theme-button-text-color) solid;
   border-radius: 1em;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.05);
+}
+
+.button-container__button {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 /*# sourceMappingURL=button.component.css.map */

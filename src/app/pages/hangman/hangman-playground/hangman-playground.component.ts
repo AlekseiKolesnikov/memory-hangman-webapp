@@ -1,9 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {repeat, Subscription} from "rxjs";
+import {Subject, Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {HandleWord} from "../../../services/random-word.service/handle-word";
 import {WordLength} from "../../../services/random-word.service/word-length";
 import hangmanData from "../../../data/hangman.data/hangman-game-data";
+import {WordService} from "../../../services/random-word.service/api/word.service";
+import {WordLettersArray} from 'src/app/services/random-word.service/wordLettersArray';
+import {HandleWord} from 'src/app/services/random-word.service/handle-word';
 
 @Component({
   selector: 'app-hangman-playground',
@@ -12,19 +14,25 @@ import hangmanData from "../../../data/hangman.data/hangman-game-data";
   encapsulation: ViewEncapsulation.None
 })
 export class HangmanPlaygroundComponent implements OnInit {
-  bodyPartsArray: string[] = hangmanData.hangman;
-  alphabetArray: string[] = hangmanData.alphabet;
-  private routeSub: Subscription;
   level: string;
   loading: boolean = false;
+  word$ = new Subject();
+  bodyPartsArray: string[] = hangmanData.hangman;
+  alphabetArray: string[] = hangmanData.alphabet;
   wordArray: string[];
-  constructor(
-    private handleWord: HandleWord,
-    private setWordLength: WordLength,
-    private route: ActivatedRoute
-  ) { }
 
-  ngOnInit() {
+  private routeSub: Subscription;
+
+  constructor(
+    private setWordLength: WordLength,
+    private handleWord: HandleWord,
+    private route: ActivatedRoute,
+    private wordService: WordService,
+    private wordLetterArray: WordLettersArray
+  ) {
+  }
+
+  ngOnInit(): void {
     this.loading = true;
     this.routeSub = this.route.params.subscribe(params => {
       this.level = params['id'];
@@ -47,6 +55,4 @@ export class HangmanPlaygroundComponent implements OnInit {
       this.setWordLength.getLengths(this.level).maxLength
     );
   }
-
-  protected readonly repeat = repeat;
 }
