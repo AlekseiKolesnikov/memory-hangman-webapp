@@ -13,13 +13,14 @@
         [ngClass]="part"/>
     </div>
 
-    <div class="word-container">
-      <div class="word-container-flex">
-        <app-word
-          *ngFor="let word of wordArray"
-          letterText="{{word.toLocaleUpperCase()}}"
-        />
-      </div>
+    <div
+      class="word-container"
+      [ngStyle]="gridStyle()"
+    >
+      <app-word
+        *ngFor="let word of wordArray"
+        letterText="{{word.toLocaleUpperCase()}}"
+      />
     </div>
 
     <div class="alphabet-container">

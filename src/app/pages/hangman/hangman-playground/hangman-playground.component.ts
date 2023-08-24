@@ -1,10 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Subject, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {WordLength} from "../../../services/random-word.service/word-length";
 import hangmanData from "../../../data/hangman.data/hangman-game-data";
-import {WordService} from "../../../services/random-word.service/api/word.service";
-import {WordLettersArray} from 'src/app/services/random-word.service/wordLettersArray';
 import {HandleWord} from 'src/app/services/random-word.service/handle-word';
 
 @Component({
@@ -16,7 +14,6 @@ import {HandleWord} from 'src/app/services/random-word.service/handle-word';
 export class HangmanPlaygroundComponent implements OnInit {
   level: string;
   loading: boolean = false;
-  word$ = new Subject();
   bodyPartsArray: string[] = hangmanData.hangman;
   alphabetArray: string[] = hangmanData.alphabet;
   wordArray: string[];
@@ -27,10 +24,7 @@ export class HangmanPlaygroundComponent implements OnInit {
     private setWordLength: WordLength,
     private handleWord: HandleWord,
     private route: ActivatedRoute,
-    private wordService: WordService,
-    private wordLetterArray: WordLettersArray
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -54,5 +48,15 @@ export class HangmanPlaygroundComponent implements OnInit {
       this.setWordLength.getLengths(this.level).minLength,
       this.setWordLength.getLengths(this.level).maxLength
     );
+  }
+
+  gridStyle() {
+    return {
+      display: 'grid',
+      'grid-template-columns': `repeat(${this.wordArray.length}, 1fr)`,
+      'justify-items': 'center',
+      'align-items': 'center',
+      'column-gap': '0.5em'
+    }
   }
 }
