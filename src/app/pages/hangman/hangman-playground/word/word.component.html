@@ -1,7 +1,11 @@
 <div
   class="letter-container"
+  [style.visibility]="!state ? 'visible' : 'hidden'"
 >
-  <div class="letter-container__letter">
+  <div
+    class="letter-container__letter"
+    [style.visibility]="state ? 'visible' : 'hidden'"
+  >
     {{letterText}}
   </div>
 </div>

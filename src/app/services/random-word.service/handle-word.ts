@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {WordService} from "./api/word.service";
 import {WordLettersArray} from "./wordLettersArray";
-import {Subscription} from "rxjs";
+import {Subscription, filter, retry} from "rxjs";
 import {Location} from "@angular/common";
 
 @Injectable({
@@ -15,20 +15,32 @@ export class HandleWord {
     private wordLetterArray: WordLettersArray
   ) { }
 
-  getWord(callBack: (word: string[]) => void, minWordLength: number, maxWordLength: number): any {
-    this.subscription = this.wordService.getWordData()
-      .subscribe(fetchedWord => {
-      const word: string = fetchedWord.toString();
-      console.log(fetchedWord)
-      if (word.length >= minWordLength && word.length <= maxWordLength) {
-        callBack(this.wordLetterArray.makeWordLettersArray(word))
-      } else {
-        this.getWord(callBack, minWordLength, maxWordLength)
-      }
-    })
+  destroySubscription(): void {
+    this.subscription.unsubscribe()
+  }
 
-    if (location.pathname === '/hangman-levels') {
-      this.subscription.unsubscribe()
+  getWord(callBack: (word: string[]) => void, minWordLength: number, maxWordLength: number): any {
+    const observable = this.wordService.getWordData()
+    // TODO сделать Observable типа string
+    const lengthFilter = (word: Object) => {
+      const filterResult = (word.toString().length >= minWordLength
+        && word.toString().length <= maxWordLength)
+      console.log(word)
+      if (filterResult) {
+        return true
+      } else {
+        throw new Error()
+      }
     }
+    // TODO сделать нормальную цепь для получения слова
+    this.subscription = observable
+      .pipe(
+        filter(lengthFilter),
+        retry(100),
+      )
+      .subscribe(fetchedWord => {
+        const word: string = fetchedWord.toString();
+        callBack(this.wordLetterArray.makeWordLettersArray(word))
+      })
   }
 }

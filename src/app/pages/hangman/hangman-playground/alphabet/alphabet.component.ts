@@ -1,12 +1,17 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-alphabet',
   templateUrl: './alphabet.component.html',
-  styleUrls: ['./alphabet.component.scss']
+  styleUrls: ['./alphabet.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AlphabetComponent {
   @Input() buttonText: string;
-  constructor() {
+  @Output() buttonClick = new EventEmitter();
+  constructor() {}
+
+  public click(): void {
+    this.buttonClick.emit()
   }
 }

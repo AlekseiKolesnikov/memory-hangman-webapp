@@ -5,9 +5,11 @@
   justify-content: center;
   align-items: center;
   border-bottom: var(--tg-theme-text-color) solid;
-}
+  visibility: visible;
 
-.letter-container__letter {
-  font-family: "Tektur", cursive;
-  font-size: 16px;
+  .letter-container__letter {
+    font-family: "Tektur", cursive;
+    font-size: 16px;
+    visibility: hidden;
+  }
 }

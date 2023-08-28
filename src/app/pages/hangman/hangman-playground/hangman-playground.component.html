@@ -15,11 +15,12 @@
 
     <div
       class="word-container"
-      [ngStyle]="gridStyl()"
+      [ngStyle]="gridStyle()"
     >
       <app-word
-        *ngFor="let word of wordArray"
-        letterText="{{word.toLocaleUpperCase()}}"
+        *ngFor="let letter of wordArray"
+        [(state)]="matched"
+        letterText="{{letter.toLocaleUpperCase()}}"
       />
     </div>
 
@@ -27,6 +28,7 @@
       <app-alphabet
         *ngFor="let letter of alphabetArray"
         buttonText="{{letter}}"
+        (buttonClick)="matchLetters(letter)"
       />
     </div>
 

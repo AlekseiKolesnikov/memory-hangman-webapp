@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {WordLength} from "../../../services/random-word.service/word-length";
@@ -8,15 +8,19 @@ import {HandleWord} from 'src/app/services/random-word.service/handle-word';
 @Component({
   selector: 'app-hangman-playground',
   templateUrl: './hangman-playground.component.html',
-  styleUrls: ['./hangman-playground.component.scss'],
+  styleUrls: [
+    './hangman-playground.component.scss',
+    './word/word.component.scss'
+  ],
   encapsulation: ViewEncapsulation.None
 })
-export class HangmanPlaygroundComponent implements OnInit {
+export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   level: string;
   loading: boolean = false;
   bodyPartsArray: string[] = hangmanData.hangman;
   alphabetArray: string[] = hangmanData.alphabet;
   wordArray: string[];
+  matched: boolean = false;
 
   private routeSub: Subscription;
 
@@ -50,6 +54,10 @@ export class HangmanPlaygroundComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.handleWord.destroySubscription()
+  }
+
   gridStyle() {
     return {
       display: 'grid',
@@ -58,5 +66,14 @@ export class HangmanPlaygroundComponent implements OnInit {
       'align-items': 'center',
       'column-gap': '0.5em'
     }
+  }
+
+  matchLetters(letter: string) {
+    // for (let wordLetter of this.wordArray) {
+      if (letter) {
+        console.log(letter)
+        this.matched = true;
+      }
+    // }
   }
 }

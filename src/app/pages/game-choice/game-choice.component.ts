@@ -21,6 +21,5 @@ export class GameChoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.navigate(['game-choice']);
-    console.log(this.router);
   }
 }

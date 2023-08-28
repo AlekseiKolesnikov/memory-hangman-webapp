@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-word',
@@ -8,6 +8,10 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 })
 export class WordComponent {
   @Input() letterText: string;
-  constructor() {
-  }
+  @Input() state: boolean;
+  @Output() stateChange = new EventEmitter<boolean>();
+
+  constructor() {}
+
+
 }
