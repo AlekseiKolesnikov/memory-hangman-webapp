@@ -1,19 +1,18 @@
 import {Injectable} from "@angular/core";
 import {WordService} from "./api/word.service";
-import {WordLettersArray} from "./word-letters-array";
-import {Subscription, filter, retry} from "rxjs";
-import {Location} from "@angular/common";
-import {DataState} from "../../data/hangman/data-state";
+import {WordSplit} from "./word-split";
+import {filter, retry, Subscription} from "rxjs";
+import {DataState} from "../../data/hangman/elements-state/data-state";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HandleWord {
+export class WordFilter {
   private subscription: Subscription;
 
   constructor(
     private wordService: WordService,
-    private wordLetterArray: WordLettersArray
+    private wordLetterArray: WordSplit
   ) { }
 
   destroySubscription(): void {

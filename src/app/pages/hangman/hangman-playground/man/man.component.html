@@ -1,6 +1,6 @@
 <div
-  [ngClass]="[gallowsPartsClass, bodyPartsClass]"
-  *ngFor="let part of bodyPartsClass"
+  [ngClass]="hangmanPart"
+  *ngFor="let part of hangmanPart"
   [ngStyle]="{'visibility': isVisible(part)}"
 >
 

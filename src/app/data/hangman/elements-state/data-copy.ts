@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export class GetGameData {
+export class DataCopy {
   constructor() {}
 
   getData(lettersArray: string[]): DataState[] {

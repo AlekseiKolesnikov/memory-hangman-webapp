@@ -2,10 +2,11 @@ import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WordLength} from "../../../services/random-word.service/word-length";
-import {HandleWord} from 'src/app/services/random-word.service/handle-word';
-import {DataState} from 'src/app/data/hangman/data-state';
-import {GetGameData} from "../../../data/hangman/get-game-data";
-import { hangmanData } from 'src/app/data/hangman/base/game-data';
+import {WordFilter} from 'src/app/services/random-word.service/word-filter';
+import {DataState} from 'src/app/data/hangman/elements-state/data-state';
+import {DataCopy} from "../../../data/hangman/elements-state/data-copy";
+import {hangmanData} from 'src/app/data/hangman/base/game-data';
+import {DataStateFilter} from "../../../data/hangman/body/data-state-filter";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -19,17 +20,17 @@ import { hangmanData } from 'src/app/data/hangman/base/game-data';
 export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   level: string;
   loading: boolean = false;
-  gallowsPartsArray: DataState[];
-  bodyPartsArray: DataState[];
+  hangmanArray: DataState[];
   alphabetArray: DataState[];
   wordArray: DataState[];
 
   private routeSub: Subscription;
 
   constructor(
-    private getGameData: GetGameData,
+    private dataStateFilter: DataStateFilter,
+    private getGameData: DataCopy,
     private setWordLength: WordLength,
-    private handleWord: HandleWord,
+    private handleWord: WordFilter,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -37,8 +38,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.alphabetArray = this.getGameData.getData(hangmanData.alphabet);
-    this.bodyPartsArray = this.getGameData.getData(hangmanData.hangman.man);
-    this.gallowsPartsArray = this.getGameData.getData(hangmanData.hangman.gallows);
+    this.hangmanArray = this.getGameData.getData(hangmanData.hangman);
     this.loading = true;
     this.routeSub = this.route.params.subscribe(params => {
       this.level = params['id'];
@@ -78,23 +78,8 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   }
 
   matchLetters(letter: DataState) {
-    let match: boolean = false;
-    for (let item of this.wordArray) {
-      if (item.getItem().toUpperCase() === letter.getItem()) {
-        item.updateHidden(true)
-        match = true;
-      }
-    }
-    for (let item of this.alphabetArray) {
-      if (item.getItem().toUpperCase() === letter.getItem()) {
-        item.updateHidden(true)
-      }
-    }
-    for (let item of this.bodyPartsArray) {
-      if (match) {
-        item.updateHidden(true)
-        console.log(item)
-      }
-    }
+    this.dataStateFilter.bodyState(this.hangmanArray);
+    this.dataStateFilter.letterState(this.wordArray, letter);
+    this.dataStateFilter.letterState(this.alphabetArray, letter);
   }
 }

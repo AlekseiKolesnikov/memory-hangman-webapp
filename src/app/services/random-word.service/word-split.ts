@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
-import {DataState} from "../../data/hangman/data-state";
+import {DataState} from "../../data/hangman/elements-state/data-state";
 
 @Injectable({
   providedIn: 'root'
 })
-export class WordLettersArray {
+export class WordSplit {
   constructor() {}
 
   makeWordLettersArray(fetchedWord: string): DataState[] {
