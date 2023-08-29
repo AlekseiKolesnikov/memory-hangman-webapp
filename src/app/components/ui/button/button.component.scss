@@ -3,7 +3,7 @@
 %button-animation {
   &:hover {
     @media #{$mouse-device} {
-      cursor: pointer;
+      cursor: auto;
     }
   }
 
