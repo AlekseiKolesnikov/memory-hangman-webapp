@@ -1,4 +1,7 @@
-<div class="letter">
+<div
+  class="letter"
+  [style.visibility]="isHidden ? 'hidden' : 'visible'"
+>
   <button
     (touchend)="click()"
     (click)="click()"

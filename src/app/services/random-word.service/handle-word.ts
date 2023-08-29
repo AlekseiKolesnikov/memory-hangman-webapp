@@ -1,15 +1,16 @@
 import {Injectable} from "@angular/core";
 import {WordService} from "./api/word.service";
-import {WordLettersArray} from "./wordLettersArray";
+import {WordLettersArray} from "./word-letters-array";
 import {Subscription, filter, retry} from "rxjs";
 import {Location} from "@angular/common";
+import {DataState} from "../../data/hangman/data-state";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HandleWord {
   private subscription: Subscription;
-  private location: Location;
+
   constructor(
     private wordService: WordService,
     private wordLetterArray: WordLettersArray
@@ -19,7 +20,7 @@ export class HandleWord {
     this.subscription.unsubscribe()
   }
 
-  getWord(callBack: (word: string[]) => void, minWordLength: number, maxWordLength: number): any {
+  getWord(callBack: (word: DataState[]) => void, minWordLength: number, maxWordLength: number): any {
     const observable = this.wordService.getWordData()
     // TODO сделать Observable типа string
     const lengthFilter = (word: Object) => {

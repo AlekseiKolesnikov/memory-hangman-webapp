@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {DataState} from "../../data/hangman/data-state";
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import {Injectable} from "@angular/core";
 export class WordLettersArray {
   constructor() {}
 
-  makeWordLettersArray(fetchedWord: string): string[] {
+  makeWordLettersArray(fetchedWord: string): DataState[] {
     let split;
     let array = [];
     for (let word of fetchedWord) {
@@ -15,6 +16,8 @@ export class WordLettersArray {
         array.push(letter);
       }
     }
-    return array;
+    return array.map<DataState>((value, _0, _1) => {
+      return new DataState(value,);
+    });
   }
 }

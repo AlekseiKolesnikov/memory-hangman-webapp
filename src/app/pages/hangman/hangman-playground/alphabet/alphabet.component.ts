@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {booleanAttribute, Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-alphabet',
@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 })
 export class AlphabetComponent {
   @Input() buttonText: string;
+  @Input({transform: booleanAttribute}) isHidden: boolean;
   @Output() buttonClick = new EventEmitter();
   constructor() {}
 

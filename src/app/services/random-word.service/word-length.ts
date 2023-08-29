@@ -14,7 +14,7 @@ export class WordLength {
 
     if (level === 'hard') {
       minLength = 8;
-      maxLength = 10;
+      maxLength = 9;
     } else if (level === 'medium') {
       minLength = 5;
       maxLength = 7;
