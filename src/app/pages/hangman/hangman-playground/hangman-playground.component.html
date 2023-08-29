@@ -9,8 +9,10 @@
 
     <div class="man-container">
       <app-man
-        *ngFor="let part of bodyPartsArray"
-        [ngClass]="part"/>
+        *ngFor="let part of hangmanArray"
+        [ngClass]="part.getItem()"
+        isHidden="{{part.getIsHidden()}}"
+      />
     </div>
 
     <div
@@ -19,16 +21,17 @@
     >
       <app-word
         *ngFor="let letter of wordArray"
-        [(state)]="matched"
-        letterText="{{letter.toLocaleUpperCase()}}"
+        letterText="{{letter.getItem().toLocaleUpperCase()}}"
+        isHidden="{{letter.getIsHidden()}}"
       />
     </div>
 
     <div class="alphabet-container">
       <app-alphabet
         *ngFor="let letter of alphabetArray"
-        buttonText="{{letter}}"
+        buttonText="{{letter.getItem()}}"
         (buttonClick)="matchLetters(letter)"
+        isHidden="{{letter.getIsHidden()}}"
       />
     </div>
 
