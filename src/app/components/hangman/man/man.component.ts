@@ -8,10 +8,11 @@ import {booleanAttribute, Component, Input, ViewEncapsulation} from '@angular/co
 })
 export class ManComponent {
   @Input({transform: booleanAttribute}) isHidden: boolean;
-  @Input() hangmanPart: string;
+  @Input() bodyPart: string;
+  @Input() gallowsPart: string;
   constructor() { }
 
   isVisible(part: string): any {
-
+    console.log(part)
   }
 }

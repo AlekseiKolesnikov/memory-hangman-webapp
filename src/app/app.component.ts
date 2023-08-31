@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {
         this.currentRoute = (event as NavigationEnd).url;
+        console.log(this.currentRoute)
         if (this.currentRoute === '/game-choice') {
           // @ts-ignore
           Telegram.WebApp.BackButton.hide()

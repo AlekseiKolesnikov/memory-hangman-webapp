@@ -10,9 +10,9 @@ import {MemoryLevelsComponent} from "./pages/memory/memory-levels/memory-levels.
 import {ErrorScreenComponent} from "./pages/error-screen/error-screen.component";
 import {HangmanPlaygroundComponent} from "./pages/hangman/hangman-playground/hangman-playground.component";
 import {LoaderComponent} from "./components/ui/loader/loader.component";
-import {ManComponent} from "./pages/hangman/hangman-playground/man/man.component";
-import {WordComponent} from "./pages/hangman/hangman-playground/word/word.component";
-import {AlphabetComponent} from "./pages/hangman/hangman-playground/alphabet/alphabet.component";
+import {ManComponent} from "./components/hangman/man/man.component";
+import {WordComponent} from "./components/hangman/word/word.component";
+import {AlphabetComponent} from "./components/hangman/alphabet/alphabet.component";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({

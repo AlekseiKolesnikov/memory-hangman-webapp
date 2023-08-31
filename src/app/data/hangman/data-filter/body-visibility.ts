@@ -7,6 +7,8 @@ import {DataState} from "../elements-state/data-state";
 export class BodyVisibility {
   bodyDetails: string[] = [];
 
+  constructor() {
+  }
   bodyState(array: DataState[]) {
     for (let item of array) {
       this.bodyDetails.push(item.getItem())

@@ -1,0 +1,7 @@
+<div
+  [ngClass]="[bodyPart, gallowsPart]"
+  *ngFor="let part of bodyPart"
+  [ngStyle]="{'visibility': isVisible(part)}"
+>
+
+</div>
