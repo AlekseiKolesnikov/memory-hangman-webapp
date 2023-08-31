@@ -1,8 +1,10 @@
 <div class="button-container _button-container">
   <button
-    type="button"
+    class="button-container__button"
     (click)="click()"
-    class="button-container__button">
+    (touchend)="click()"
+    [class.active]="isClicked"
+  >
     {{buttonText}}
   </button>
 </div>

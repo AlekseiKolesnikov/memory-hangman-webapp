@@ -6,7 +6,8 @@ import {WordFilter} from 'src/app/services/random-word.service/word-filter';
 import {DataState} from 'src/app/data/hangman/elements-state/data-state';
 import {DataCopy} from "../../../data/hangman/elements-state/data-copy";
 import {hangmanData} from 'src/app/data/hangman/base/game-data';
-import {DataStateFilter} from "../../../data/hangman/body/data-state-filter";
+import {LetterVisibility} from "../../../data/hangman/data-filter/letter-visibility";
+import {BodyVisibility} from "../../../data/hangman/data-filter/body-visibility";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -20,14 +21,16 @@ import {DataStateFilter} from "../../../data/hangman/body/data-state-filter";
 export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   level: string;
   loading: boolean = false;
-  hangmanArray: DataState[];
+  bodyArray: DataState[];
+  gallowsArray: DataState[];
   alphabetArray: DataState[];
   wordArray: DataState[];
 
   private routeSub: Subscription;
 
   constructor(
-    private dataStateFilter: DataStateFilter,
+    private letterVisibility: LetterVisibility,
+    private bodyVisibility: BodyVisibility,
     private getGameData: DataCopy,
     private setWordLength: WordLength,
     private handleWord: WordFilter,
@@ -38,7 +41,8 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.alphabetArray = this.getGameData.getData(hangmanData.alphabet);
-    this.hangmanArray = this.getGameData.getData(hangmanData.hangman);
+    this.bodyArray = this.getGameData.getData(hangmanData.hangman.body);
+    this.gallowsArray = this.getGameData.getData(hangmanData.hangman.gallows)
     this.loading = true;
     this.routeSub = this.route.params.subscribe(params => {
       this.level = params['id'];
@@ -78,8 +82,8 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   }
 
   matchLetters(letter: DataState) {
-    this.dataStateFilter.bodyState(this.hangmanArray);
-    this.dataStateFilter.letterState(this.wordArray, letter);
-    this.dataStateFilter.letterState(this.alphabetArray, letter);
+    this.bodyVisibility.bodyState(this.bodyArray);
+    this.letterVisibility.letterIsHidden(this.wordArray, letter);
+    this.letterVisibility.letterIsHidden(this.alphabetArray, letter);
   }
 }

@@ -9,8 +9,11 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 export class ButtonComponent {
   @Input() buttonText: string;
   @Output() buttonClick = new EventEmitter();
+  isClicked:boolean = false;
 
-  public click(): void {
+  click(): void {
+    console.log('clicked')
+    this.isClicked = true;
     this.buttonClick.emit()
   }
 }

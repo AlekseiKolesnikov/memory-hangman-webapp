@@ -1,18 +1,5 @@
 @import "../../../styles/patterns";
 
-%button-animation {
-  &:hover {
-    @media #{$mouse-device} {
-      cursor: auto;
-    }
-  }
-
-  &:active {
-    animation: squeeze 0.05s ease-out;
-    animation-fill-mode: forwards;
-  }
-}
-
 //------BUTTONS----------------------------------------------------
 ._button-container {
   max-width: 50vw;

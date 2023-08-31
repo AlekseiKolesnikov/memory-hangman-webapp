@@ -9,9 +9,9 @@
 
     <div class="man-container">
       <app-man
-        *ngFor="let part of hangmanArray"
-        [ngClass]="part.getItem()"
-        isHidden="{{part.getIsHidden()}}"
+        *ngFor="let bodyPart of bodyArray, let gallowsPart of gallowsArray"
+        [ngClass]="[bodyPart.getItem(), gallowsPart.getItem()]"
+        isHidden="{{bodyPart.getIsHidden()}}"
       />
     </div>
 
