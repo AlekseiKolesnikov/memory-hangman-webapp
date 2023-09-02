@@ -5,15 +5,10 @@ import {DataState} from "../elements-state/data-state";
   providedIn: 'root'
 })
 export class BodyVisibility {
-  bodyDetails: string[] = [];
+  constructor() { }
 
-  constructor() {
-  }
-  bodyState(array: DataState[]) {
-    for (let item of array) {
-      this.bodyDetails.push(item.getItem())
-    }
-    console.log(this.bodyDetails)
-    return this.bodyDetails;
+  bodyState(array: DataState[], matchedCounter: number): DataState[] {
+    array[matchedCounter].updateHidden(true)
+    return array
   }
 }

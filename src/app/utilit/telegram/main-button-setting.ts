@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
-export class MainButtonSett {
+export class MainButtonSetting {
   constructor(
     private router: Router
   ) { }

@@ -11,7 +11,7 @@ export const hangmanData: IHangmanData = {
     'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
   hangman: {
     gallows: ['bottom', 'column', 'top', 'rope'],
-    body: ['head', 'data-filter', 'right-hand', 'left-hand',
+    body: ['head', 'body', 'right-hand', 'left-hand',
       'right-leg', 'left-leg']
   }
 }

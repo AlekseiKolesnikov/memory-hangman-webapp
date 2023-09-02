@@ -14,6 +14,7 @@ import {ManComponent} from "./components/hangman/man/man.component";
 import {WordComponent} from "./components/hangman/word/word.component";
 import {AlphabetComponent} from "./components/hangman/alphabet/alphabet.component";
 import {HttpClientModule} from "@angular/common/http";
+import {MemoryButtonComponent} from "./components/memory/memory-button.component/memory-button.component.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {HttpClientModule} from "@angular/common/http";
     ManComponent,
     WordComponent,
     AlphabetComponent,
-    ErrorScreenComponent
+    ErrorScreenComponent,
+    MemoryButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,6 @@ export class ButtonComponent {
   isClicked:boolean = false;
 
   click(): void {
-    console.log('clicked')
     this.isClicked = true;
     this.buttonClick.emit()
   }

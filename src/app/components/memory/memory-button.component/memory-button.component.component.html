@@ -1,0 +1,10 @@
+<div class="memory-button">
+  <button
+    class="memory-button__button"
+    (click)="click()"
+    (touchend)="click()"
+    [class.active]="isClicked"
+  >
+    {{buttonText}}
+  </button>
+</div>

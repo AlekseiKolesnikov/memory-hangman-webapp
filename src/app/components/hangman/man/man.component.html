@@ -1,7 +1,7 @@
 <div
-  [ngClass]="[bodyPart, gallowsPart]"
-  *ngFor="let part of bodyPart"
-  [ngStyle]="{'visibility': isVisible(part)}"
+  *ngFor="let bodyPart of bodyPartArray, let gallowsPart of gallowsPartArray"
+  [class]="[bodyPart, gallowsPart]"
+  [ngStyle]="{'visibility': isHidden ? 'visible' : 'hidden'}"
 >
 
 </div>

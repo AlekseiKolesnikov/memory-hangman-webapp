@@ -1,0 +1,26 @@
+$mouse-device: '(hover:hover) and (pointer: fine)';
+
+%button-animation {
+  &:hover {
+    @media #{$mouse-device} {
+      cursor: pointer;
+    }
+  }
+
+  &:active {
+    animation: squeeze 0.05s ease-out;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes squeeze {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+
+  100% {
+    width: 92%;
+    height: 92%;
+  }
+}

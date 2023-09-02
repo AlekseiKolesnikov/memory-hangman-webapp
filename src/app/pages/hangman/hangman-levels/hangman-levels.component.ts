@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   templateUrl: './hangman-levels.component.html',
   styleUrls: [
     './hangman-levels.component.scss',
-    '../../../styles/transition.scss'
+    '../../../styles/transitions/pages-transition.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })

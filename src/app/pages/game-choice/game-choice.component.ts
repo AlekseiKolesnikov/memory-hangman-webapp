@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   templateUrl: './game-choice.component.html',
   styleUrls: [
     './game-choice.component.scss',
-    '../../styles/transition.scss'
+    '../../styles/transitions/pages-transition.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })

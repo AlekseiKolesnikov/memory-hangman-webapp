@@ -1,11 +1,12 @@
-@import "src/app/styles/patterns";
+@import "src/app/styles/patterns/animations/button-animation.pattern";
+@import "src/app/styles/patterns/game-container.pattern";
 
 .hangman-playground {
   @extend %game-container;
 }
 
 .word-container {
-  width: 90%;
+  width: fit-content;
   height: 15%;
 }
 

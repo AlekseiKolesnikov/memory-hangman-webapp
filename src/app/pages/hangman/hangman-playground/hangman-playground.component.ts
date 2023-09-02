@@ -8,7 +8,7 @@ import {DataCopy} from "../../../data/hangman/elements-state/data-copy";
 import {hangmanData} from 'src/app/data/hangman/base/game-data';
 import {LetterVisibility} from "../../../data/hangman/data-filter/letter-visibility";
 import {BodyVisibility} from "../../../data/hangman/data-filter/body-visibility";
-import {MainButtonSett} from "../../../utilit/telegram/main-button-sett";
+import {MainButtonSetting} from "../../../utilit/telegram/main-button-setting";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -30,7 +30,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(
-    private mainButton: MainButtonSett,
+    private mainButton: MainButtonSetting,
     private letterVisibility: LetterVisibility,
     private bodyVisibility: BodyVisibility,
     private getGameData: DataCopy,
@@ -76,8 +76,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   }
 
   matchLetters(letter: DataState) {
-    this.bodyVisibility.bodyState(this.bodyArray);
-    this.letterVisibility.letterIsHidden(this.wordArray, letter);
-    this.letterVisibility.letterIsHidden(this.alphabetArray, letter);
+    this.letterVisibility.letterIsHidden(this.wordArray, this.bodyArray, letter);
+    this.letterVisibility.letterIsHidden(this.alphabetArray, this.bodyArray, letter);
   }
 }
