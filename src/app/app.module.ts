@@ -16,7 +16,7 @@ import {AlphabetComponent} from "./components/hangman/alphabet/alphabet.componen
 import {HttpClientModule} from "@angular/common/http";
 import {MemoryButtonComponent} from "./components/memory/memory-button.component/memory-button.component.component";
 import {GallowsComponent} from "./components/hangman/gallows/gallows.component";
-import {VictoryScreenComponent} from "./pages/victory-screen/victory-screen.component";
+import {FinalScreenComponent} from "./pages/final-screen/final-screen.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import {VictoryScreenComponent} from "./pages/victory-screen/victory-screen.comp
     AlphabetComponent,
     ErrorScreenComponent,
     MemoryButtonComponent,
-    VictoryScreenComponent
+    FinalScreenComponent
   ],
   imports: [
     BrowserModule,

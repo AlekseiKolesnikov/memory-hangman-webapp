@@ -1,20 +1,24 @@
-import {Injectable} from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 
-@Injectable({
-    providedIn: 'root'
+@Component({
+    selector: 'app-final-screen',
+    templateUrl: './final-screen.component.html',
+    styleUrls: ['./final-screen.component.scss'],
+    encapsulation: ViewEncapsulation.None
+
 })
-export class MainButtonSetting {
+export class FinalScreenComponent implements OnInit {
     constructor(
         private router: Router
     ) {
     }
 
-    activateButton() {
+    ngOnInit() {
         // @ts-ignore
         Telegram.WebApp.MainButton.show();
         // @ts-ignore
-        Telegram.WebApp.MainButton.setText('Закончить Игру')
+        Telegram.WebApp.MainButton.setText('Главное Меню')
         // @ts-ignore
         Telegram.WebApp.onEvent("mainButtonClicked", () => {
             this.router.navigate(['game-choice']);
