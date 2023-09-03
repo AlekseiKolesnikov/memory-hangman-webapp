@@ -1,4 +1,4 @@
-import {booleanAttribute, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-man',
@@ -6,18 +6,7 @@ import {booleanAttribute, Component, Input, OnInit, ViewEncapsulation} from '@an
   styleUrls: ['./man.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ManComponent implements OnInit {
-  @Input({transform: booleanAttribute}) isHidden: boolean;
-  @Input() bodyPartArray: string;
-  @Input() gallowsPartArray: string;
-
+export class ManComponent {
   constructor() {
-  }
-
-  ngOnInit() {
-    console.log(this.isHidden)
-    if (this.isHidden) {
-      console.log(this.isHidden)
-    }
   }
 }

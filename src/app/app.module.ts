@@ -15,6 +15,8 @@ import {WordComponent} from "./components/hangman/word/word.component";
 import {AlphabetComponent} from "./components/hangman/alphabet/alphabet.component";
 import {HttpClientModule} from "@angular/common/http";
 import {MemoryButtonComponent} from "./components/memory/memory-button.component/memory-button.component.component";
+import {GallowsComponent} from "./components/hangman/gallows/gallows.component";
+import {VictoryScreenComponent} from "./pages/victory-screen/victory-screen.component";
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import {MemoryButtonComponent} from "./components/memory/memory-button.component
     MemoryLevelsComponent,
     LoaderComponent,
     HangmanPlaygroundComponent,
+    GallowsComponent,
     ManComponent,
     WordComponent,
     AlphabetComponent,
     ErrorScreenComponent,
-    MemoryButtonComponent
+    MemoryButtonComponent,
+    VictoryScreenComponent
   ],
   imports: [
     BrowserModule,

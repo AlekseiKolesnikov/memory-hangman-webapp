@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class WordService {
+export class RandomWordService {
   constructor(private http: HttpClient) {
   }
 

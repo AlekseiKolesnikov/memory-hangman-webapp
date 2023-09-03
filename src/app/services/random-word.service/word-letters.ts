@@ -4,7 +4,7 @@ import {DataState} from "../../data/hangman/elements-state/data-state";
 @Injectable({
   providedIn: 'root'
 })
-export class WordSplit {
+export class WordLetters {
   constructor() {}
 
   makeWordLettersArray(fetchedWord: string): DataState[] {

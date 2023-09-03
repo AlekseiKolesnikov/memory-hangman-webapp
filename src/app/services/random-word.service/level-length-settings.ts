@@ -3,10 +3,8 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export class WordLength {
-
-  constructor() {
-  }
+export class LevelLengthSettings {
+  constructor() { }
 
   getLengths(level: string): { minLength: number, maxLength: number } {
     let minLength: number;

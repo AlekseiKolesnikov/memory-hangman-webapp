@@ -1,39 +1,42 @@
 <div>
-  <div *ngIf="loading">
-    <app-loader/>
-  </div>
-
-  <div
-    *ngIf="!loading"
-    class="hangman-playground">
-
-    <div class="man-container">
-      <app-man
-        *ngFor="let bodyPart of bodyArray, let gallowsPart of gallowsArray"
-        [ngClass]="[bodyPart.getItem(), gallowsPart.getItem()]"
-        isHidden="{{bodyPart.getIsHidden()}}"
-      />
+    <div *ngIf="loading">
+        <app-loader/>
     </div>
 
     <div
-      class="word-container"
-      [ngStyle]="gridStyle()"
-    >
-      <app-word
-        *ngFor="let letter of wordArray"
-        letterText="{{letter.getItem().toLocaleUpperCase()}}"
-        isHidden="{{letter.getIsHidden()}}"
-      />
-    </div>
+            *ngIf="!loading"
+            class="hangman-playground">
 
-    <div class="alphabet-container">
-      <app-alphabet
-        *ngFor="let letter of alphabetArray"
-        buttonText="{{letter.getItem()}}"
-        (buttonClick)="matchLetters(letter)"
-        isHidden="{{letter.getIsHidden()}}"
-      />
-    </div>
+        <div class="man-container">
+            <app-gallows
+                    *ngFor="let gallowsPart of gallowsArray"
+                    [ngClass]="gallowsPart.getItem()"
+            />
+            <app-man
+                    *ngFor="let bodyPart of bodyArray"
+                    [ngClass]="bodyPart.getIsHidden() ? bodyPart.getItem() : ''"
+            />
+        </div>
 
-  </div>
+        <div
+                class="word-container"
+                [ngStyle]="gridStyle()"
+        >
+            <app-word
+                    *ngFor="let letter of wordArray"
+                    letterText="{{letter.getItem().toLocaleUpperCase()}}"
+                    isHidden="{{letter.getIsHidden()}}"
+            />
+        </div>
+
+        <div class="alphabet-container">
+            <app-alphabet
+                    *ngFor="let letter of alphabetArray"
+                    buttonText="{{letter.getItem()}}"
+                    (buttonClick)="matchLetters(letter)"
+                    isHidden="{{letter.getIsHidden()}}"
+            />
+        </div>
+
+    </div>
 </div>

@@ -1,18 +1,18 @@
 import {Injectable} from "@angular/core";
-import {WordService} from "./api/word.service";
-import {WordSplit} from "./word-split";
+import {RandomWordService} from "./api/random-word.service";
+import {WordLetters} from "./word-letters";
 import {filter, retry, Subscription} from "rxjs";
 import {DataState} from "../../data/hangman/elements-state/data-state";
 
 @Injectable({
   providedIn: 'root'
 })
-export class WordFilter {
+export class RandomWordsFilter {
   private subscription: Subscription;
 
   constructor(
-    private wordService: WordService,
-    private wordLetterArray: WordSplit
+    private wordService: RandomWordService,
+    private wordLetterArray: WordLetters
   ) { }
 
   destroySubscription(): void {
