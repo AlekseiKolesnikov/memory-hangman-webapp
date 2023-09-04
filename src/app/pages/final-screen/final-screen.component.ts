@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {MainButtonSetting} from "../../utilit/telegram/main-button-setting";
 
 @Component({
   selector: 'app-final-screen',
@@ -16,20 +17,12 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private mainButton: MainButtonSetting
   ) { }
 
   ngOnInit() {
-    // @ts-ignore
-    Telegram.WebApp.MainButton.show();
-    // @ts-ignore
-    Telegram.WebApp.MainButton.setText('Главное Меню')
-    // @ts-ignore
-    Telegram.WebApp.onEvent("mainButtonClicked", () => {
-      this.router.navigate(['game-choice']);
-      // @ts-ignore
-      Telegram.WebApp.MainButton.hide();
-    })
+    this.mainButton.activateButton('Главное Меню');
 
     this.routeSub = this.route.params.subscribe(params => {
       this.level = params['level'];

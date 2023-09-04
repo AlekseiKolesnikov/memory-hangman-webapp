@@ -12,7 +12,7 @@ export class LetterVisibility extends BodyVisibility {
   wrongLetter: boolean = true;
 
   constructor(
-    private router: Router
+    private router: Router,
   ) {
     super()
   }
@@ -54,4 +54,10 @@ export class LetterVisibility extends BodyVisibility {
       }
     }
   }
+
+  cleanCounters() {
+    this.mismatchedCounter = 0
+    this.matchedCounter = 0
+  }
 }
+

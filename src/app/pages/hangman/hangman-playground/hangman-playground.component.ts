@@ -25,6 +25,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   gallowsArray: DataState[];
   alphabetArray: DataState[];
   wordArray: DataState[];
+  counter: object;
 
   private routeSub: Subscription;
 
@@ -47,13 +48,11 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
       this.level = params['id'];
     })
 
-    console.log(this.bodyArray);
     this.handleWord.getWord(
       (word) => {
         this.wordArray = word;
         this.loading = false;
         this.mainButton.activateButton('Закончить Игру');
-        console.log(this.wordArray);
       },
       this.setWordLength.getLengths(this.level).minLength,
       this.setWordLength.getLengths(this.level).maxLength
@@ -63,6 +62,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.handleWord.destroySubscription()
     this.routeSub.unsubscribe()
+    this.letterVisibility.cleanCounters()
   }
 
   gridStyle() {
