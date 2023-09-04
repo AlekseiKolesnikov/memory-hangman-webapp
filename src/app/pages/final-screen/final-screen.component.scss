@@ -32,7 +32,7 @@
   font: bold 16px Tektur, sans-serif;
   letter-spacing: 0.2em;
   color: var(--tg-theme-text-color);
-  animation: wave 1.2s infinite;
+  animation: wave 1.2s;
   animation-delay: calc(.1s * var(--i));
 }
 

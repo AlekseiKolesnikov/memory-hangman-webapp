@@ -36,14 +36,16 @@ export class LetterVisibility extends BodyVisibility {
     }
 
     if (this.mismatchedCounter === bodyArray.length) {
-      this.router.navigate(['final-screen', {level: level, state: 'defeat'}])
-      this.mismatchedCounter = 0
-      this.matchedCounter = 0
+      this.router.navigate(['final-screen', {
+        level: level,
+        state: 'defeat'
+      }])
     }
     if (this.matchedCounter === letterArray.length) {
-      this.router.navigate(['final-screen', {level: level, state: 'victory'}])
-      this.mismatchedCounter = 0
-      this.matchedCounter = 0
+      this.router.navigate(['final-screen', {
+        level: level,
+        state: 'victory'
+      }])
     }
   }
 
