@@ -1,9 +1,5 @@
 <div
   class="hangman-levels"
-  [ngClass]="{
-    'fadeOut' : !state,
-    'fadeIn' : state
-    }"
 >
   <app-button
     (buttonClick)="onClick('hard')"

@@ -1,31 +1,49 @@
-<div class="final-screen-box">
-    <div class="defeat-text">
-        <span style="--i:1">П</span>
-        <span style="--i:2">О</span>
-        <span style="--i:3">Р</span>
-        <span style="--i:4">О</span>
-        <span style="--i:5">Ж</span>
-        <span style="--i:6">Е</span>
-        <span style="--i:7">Н</span>
-        <span style="--i:8">И</span>
-        <span style="--i:9">Е</span>
-        <span style="--i:10">!</span>
+<div class="final-screen">
+  <div class="final-screen-box">
+    <div
+      *ngIf="state==='defeat'"
+      class="defeat-text"
+    >
+      <span style="--i:1">П</span>
+      <span style="--i:2">О</span>
+      <span style="--i:3">Р</span>
+      <span style="--i:4">О</span>
+      <span style="--i:5">Ж</span>
+      <span style="--i:6">Е</span>
+      <span style="--i:7">Н</span>
+      <span style="--i:8">И</span>
+      <span style="--i:9">Е</span>
+      <span style="--i:10">!</span>
     </div>
-    <div class="victory-text">
-        <span style="--i:1">П</span>
-        <span style="--i:2">О</span>
-        <span style="--i:3">Б</span>
-        <span style="--i:4">Е</span>
-        <span style="--i:5">Д</span>
-        <span style="--i:6">А</span>
-        <span style="--i:7">!</span>
+    <div
+      *ngIf="state==='victory'"
+      class="victory-text"
+    >
+      <span style="--i:1">П</span>
+      <span style="--i:2">О</span>
+      <span style="--i:3">Б</span>
+      <span style="--i:4">Е</span>
+      <span style="--i:5">Д</span>
+      <span style="--i:6">А</span>
+      <span style="--i:7">!</span>
     </div>
     <div class="final-screen-buttons">
-        <button class="final-screen-buttons__restart">
-            Начать Заново
+      <div class="final-screen-buttons__restart-container">
+        <button
+          class="final-screen-buttons__restart"
+          (click)="click('restart')"
+        >
+          Начать Заново
         </button>
-        <button class="final-screen-buttons__change-level">
-            Сменить Уровень
+      </div>
+      <div class="final-screen-buttons__change-level-container">
+        <button
+          class="final-screen-buttons__change-level"
+          (click)="click('change-level')"
+        >
+          Сменить Уровень
         </button>
+      </div>
     </div>
+  </div>
 </div>

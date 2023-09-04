@@ -4,52 +4,54 @@ import {BodyVisibility} from "./body-visibility";
 import {Router} from "@angular/router";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class LetterVisibility extends BodyVisibility {
-    mismatchedCounter: number = 0;
-    matchedCounter: number = 0;
-    wrongLetter: boolean = true;
+  mismatchedCounter: number = 0;
+  matchedCounter: number = 0;
+  wrongLetter: boolean = true;
 
-    constructor(
-        private router: Router
-    ) {
-        super()
+  constructor(
+    private router: Router
+  ) {
+    super()
+  }
+
+  wordLetterIsHidden(letterArray: DataState[], bodyArray: DataState[], letter: DataState, level: string) {
+    let matched: boolean = false;
+
+    for (let item of letterArray) {
+      if (item.getItem().toUpperCase() === letter.getItem()) {
+        item.updateHidden(true)
+        this.matchedCounter++;
+        matched = true
+      }
+    }
+    if (matched) {
+      this.wrongLetter = false;
+    } else {
+      this.wrongLetter = true;
+      this.bodyState(bodyArray, this.mismatchedCounter);
+      this.mismatchedCounter++;
     }
 
-    wordLetterIsHidden(letterArray: DataState[], bodyArray: DataState[], letter: DataState) {
-        let matched: boolean = false;
-
-        for (let item of letterArray) {
-            if (item.getItem().toUpperCase() === letter.getItem()) {
-                item.updateHidden(true)
-                matched = true
-            }
-        }
-        if (matched) {
-            this.matchedCounter++;
-            this.wrongLetter = false;
-        } else {
-            this.wrongLetter = true;
-            this.bodyState(bodyArray, this.mismatchedCounter);
-            this.mismatchedCounter++;
-        }
-
-        if (this.mismatchedCounter === bodyArray.length) {
-            this.router.navigate(['defeat-screen'])
-        }
-
-        if (this.matchedCounter === letterArray.length) {
-            this.router.navigate(['victory-screen'])
-        }
+    if (this.mismatchedCounter === bodyArray.length) {
+      this.router.navigate(['final-screen', {level: level, state: 'defeat'}])
+      this.mismatchedCounter = 0
+      this.matchedCounter = 0
     }
-
-    alphabetLetterIsHidden(letterArray: DataState[], letter: DataState) {
-        for (let item of letterArray) {
-            if (item.getItem().toUpperCase() === letter.getItem()) {
-                item.updateHidden(true)
-            }
-        }
+    if (this.matchedCounter === letterArray.length) {
+      this.router.navigate(['final-screen', {level: level, state: 'victory'}])
+      this.mismatchedCounter = 0
+      this.matchedCounter = 0
     }
+  }
 
+  alphabetLetterIsHidden(letterArray: DataState[], letter: DataState) {
+    for (let item of letterArray) {
+      if (item.getItem().toUpperCase() === letter.getItem()) {
+        item.updateHidden(true)
+      }
+    }
+  }
 }

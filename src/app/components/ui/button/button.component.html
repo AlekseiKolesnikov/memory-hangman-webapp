@@ -1,4 +1,10 @@
-<div class="button-container _button-container">
+<div
+  class="button-container _button-container"
+  [ngClass]="{
+    'fadeOut' : isClicked,
+    'fadeIn' : !isClicked
+    }"
+>
   <button
     class="button-container__button"
     (click)="click()"

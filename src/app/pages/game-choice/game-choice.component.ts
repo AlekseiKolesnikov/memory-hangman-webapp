@@ -11,11 +11,9 @@ import {Router} from "@angular/router";
   encapsulation: ViewEncapsulation.None
 })
 export class GameChoiceComponent implements OnInit {
-  state: boolean = true;
   constructor(private router: Router) { }
 
   onClick(path: string) {
-    this.state = !this.state;
     this.router.navigate([path]);
   }
 
