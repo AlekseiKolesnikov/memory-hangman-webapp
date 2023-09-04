@@ -49,4 +49,14 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
       this.router.navigate(['hangman-levels']);
     }
   }
+
+  touch(event: Event, isButton: string) {
+    event.preventDefault()
+    if (isButton === 'restart') {
+      this.router.navigate(['hangman-playground', {id: this.level}]);
+    }
+    if (isButton === 'change-level') {
+      this.router.navigate(['hangman-levels']);
+    }
+  }
 }

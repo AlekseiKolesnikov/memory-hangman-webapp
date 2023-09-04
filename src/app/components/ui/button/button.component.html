@@ -8,7 +8,7 @@
   <button
     class="button-container__button"
     (click)="click()"
-    (touchend)="click()"
+    (touchend)="touch($event)"
     [class.active]="isClicked"
   >
     {{buttonText}}

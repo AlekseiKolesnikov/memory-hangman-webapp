@@ -45,6 +45,7 @@
         <button
           class="final-screen-buttons__restart"
           (click)="click('restart')"
+          (touchend)="touch($event, 'restart')"
         >
           Начать Заново
         </button>
@@ -53,6 +54,7 @@
         <button
           class="final-screen-buttons__change-level"
           (click)="click('change-level')"
+          (touchend)="touch($event, 'change-level')"
         >
           Сменить Уровень
         </button>

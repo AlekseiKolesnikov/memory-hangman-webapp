@@ -15,4 +15,9 @@ export class ButtonComponent {
     this.isClicked = true;
     this.buttonClick.emit()
   }
+  touch(event: Event) {
+    event.preventDefault()
+    this.isClicked = true
+    this.buttonClick.emit()
+  }
 }
