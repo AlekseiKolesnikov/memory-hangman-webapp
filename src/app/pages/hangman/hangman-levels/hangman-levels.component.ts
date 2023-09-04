@@ -4,10 +4,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'hangman-levels',
   templateUrl: './hangman-levels.component.html',
-  styleUrls: [
-    './hangman-levels.component.scss',
-    '../../../styles/transitions/pages-transition.scss'
-  ],
+  styleUrls: ['./hangman-levels.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class HangmanLevelsComponent implements OnInit {

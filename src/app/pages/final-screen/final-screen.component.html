@@ -1,4 +1,10 @@
-<div class="final-screen">
+<div
+  class="final-screen"
+  [ngClass]="{
+    'fadeOut' : showScreen,
+    'fadeIn' : !showScreen
+    }"
+>
   <div class="final-screen-box">
     <div
       *ngIf="state==='defeat'"
@@ -27,7 +33,14 @@
       <span style="--i:6">А</span>
       <span style="--i:7">!</span>
     </div>
-    <div class="final-screen-buttons">
+    <div
+      *ngIf="showButtons"
+      class="final-screen-buttons"
+      [ngClass]="{
+    'fadeOut' : !showButtons,
+    'fadeIn' : showButtons
+    }"
+    >
       <div class="final-screen-buttons__restart-container">
         <button
           class="final-screen-buttons__restart"

@@ -6,13 +6,18 @@ import {MainButtonSetting} from "../../utilit/telegram/main-button-setting";
 @Component({
   selector: 'app-final-screen',
   templateUrl: './final-screen.component.html',
-  styleUrls: ['./final-screen.component.scss'],
+  styleUrls: [
+    './final-screen.component.scss',
+    '../../styles/transitions/pages-transition.scss'
+  ],
   encapsulation: ViewEncapsulation.None
 
 })
 export class FinalScreenComponent implements OnInit, OnDestroy {
-  level: string;
-  state: string;
+  public level: string;
+  public state: string;
+  public showScreen: boolean = false;
+  public showButtons: boolean = false;
 
   private routeSub: Subscription;
   constructor(
@@ -22,6 +27,7 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    setTimeout(() => this.showButtons = true, 1500)
     this.mainButton.activateButton('Главное Меню');
 
     this.routeSub = this.route.params.subscribe(params => {
@@ -32,6 +38,7 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeSub.unsubscribe()
+    this.showButtons = false
   }
 
   click(isButton: string) {
