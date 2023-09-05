@@ -10,28 +10,26 @@
       *ngIf="state==='defeat'"
       class="defeat-text"
     >
-      <span style="--i:1">П</span>
-      <span style="--i:2">О</span>
-      <span style="--i:3">Р</span>
-      <span style="--i:4">О</span>
-      <span style="--i:5">Ж</span>
-      <span style="--i:6">Е</span>
-      <span style="--i:7">Н</span>
-      <span style="--i:8">И</span>
-      <span style="--i:9">Е</span>
+      <span style="--i:1">D</span>
+      <span style="--i:2">E</span>
+      <span style="--i:3">F</span>
+      <span style="--i:4">E</span>
+      <span style="--i:5">A</span>
+      <span style="--i:6">T</span>
       <span style="--i:10">!</span>
     </div>
     <div
       *ngIf="state==='victory'"
       class="victory-text"
     >
-      <span style="--i:1">П</span>
-      <span style="--i:2">О</span>
-      <span style="--i:3">Б</span>
-      <span style="--i:4">Е</span>
-      <span style="--i:5">Д</span>
-      <span style="--i:6">А</span>
-      <span style="--i:7">!</span>
+      <span style="--i:1">V</span>
+      <span style="--i:2">I</span>
+      <span style="--i:3">C</span>
+      <span style="--i:4">T</span>
+      <span style="--i:5">O</span>
+      <span style="--i:6">R</span>
+      <span style="--i:7">Y</span>
+      <span style="--i:8">!</span>
     </div>
     <div
       *ngIf="showButtons"
@@ -47,7 +45,7 @@
           (click)="click('restart')"
           (touchend)="touch($event, 'restart')"
         >
-          Начать Заново
+          Restart
         </button>
       </div>
       <div class="final-screen-buttons__change-level-container">
@@ -56,7 +54,7 @@
           (click)="click('change-level')"
           (touchend)="touch($event, 'change-level')"
         >
-          Сменить Уровень
+          Change Level
         </button>
       </div>
     </div>

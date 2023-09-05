@@ -3,7 +3,10 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 @Component({
   selector: 'app-memory-button',
   templateUrl: './memory-button.component.component.html',
-  styleUrls: ['./memory-button.component.component.scss'],
+  styleUrls: [
+    './memory-button.component.component.scss',
+    '../../ui/button/button.component.scss'
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class MemoryButtonComponent {

@@ -31,6 +31,6 @@ export class MemoryLevelsComponent implements OnInit {
   }
 
   gridStyle() {
-    return this.style.getGridStyle(3);
+    return this.style.getGridStyle(3, 2);
   }
 }

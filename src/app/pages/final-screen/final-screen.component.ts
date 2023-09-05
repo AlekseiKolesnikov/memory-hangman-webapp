@@ -28,7 +28,7 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     setTimeout(() => this.showButtons = true, 1500)
-    this.mainButton.activateButton('Главное Меню');
+    this.mainButton.activateButton('Main Menu');
 
     this.routeSub = this.route.params.subscribe(params => {
       this.level = params['level'];

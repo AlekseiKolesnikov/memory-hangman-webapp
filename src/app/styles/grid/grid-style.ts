@@ -6,13 +6,14 @@ import {Injectable} from "@angular/core";
 export class GridStyle {
   constructor() { }
 
-  getGridStyle(repeatNumber: number) {
+  getGridStyle(repeatNumber: number, gap: number) {
     return {
       'display': 'grid',
       'grid-template-columns': `repeat(${repeatNumber}, 1fr)`,
       'justify-items': 'center',
       'align-items': 'center',
-      'column-gap': '0.5em'
+      'column-gap': `${gap}em`,
+      'row-gap': `${gap}em`
     }
   }
 }

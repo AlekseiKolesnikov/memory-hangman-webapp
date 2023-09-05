@@ -54,7 +54,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
       (word) => {
         this.wordArray = word;
         this.loading = false;
-        this.mainButton.activateButton('Закончить Игру');
+        this.mainButton.activateButton('Finish Game');
       },
       this.setWordLength.getLengths(this.level).minLength,
       this.setWordLength.getLengths(this.level).maxLength
@@ -68,7 +68,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   }
 
   gridStyle() {
-    return this.style.getGridStyle(this.wordArray.length);
+    return this.style.getGridStyle(this.wordArray.length, 0.5);
   }
 
   matchLetters(letter: DataState) {
