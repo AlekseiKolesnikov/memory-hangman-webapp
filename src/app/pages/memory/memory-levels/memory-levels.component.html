@@ -1,5 +1,7 @@
 <div>
   <app-memory-button
+    *ngFor="let item of levelsArray"
+    buttonText="{{item.getLevel()}}"
   />
   <img [src]="randomPicture" alt="pic">
 </div>

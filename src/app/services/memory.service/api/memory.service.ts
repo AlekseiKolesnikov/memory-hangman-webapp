@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {RandomPath} from "./random-path";
 
 @Injectable({
@@ -15,6 +14,7 @@ export class MemoryService {
 
   getPicture() {
     const randomPictureUrl: string = `https://robohash.org/${this.randomPath.getPath()}.png`
+
     return this.http.get(randomPictureUrl, {responseType: 'blob'});
   }
 }

@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MemoryService} from "../../../services/memory.service/api/memory.service";
+import {LevelData} from "../../../data/memory/level-data/level-data";
+import {LevelDataMap} from "../../../data/memory/level-data/level-data-map";
+import {memoryLevelsPicAmountData} from "../../../data/memory/base/levels-pictures-amount";
 
 @Component({
   selector: 'app-memory-levels',
@@ -8,19 +11,24 @@ import {MemoryService} from "../../../services/memory.service/api/memory.service
   encapsulation: ViewEncapsulation.None
 })
 export class MemoryLevelsComponent implements OnInit {
-  public levelsArray: number[] = [1,2,3,4,5,6,7,8,9]
-  public picAmountArray: number[] = [4, 6, 9, 12, 16, 20, 25, 30, 36]
-  randomPicture: any;
+  public levelsArray: LevelData[]
+  public picAmountArray: LevelData[]
+  randomPicture: string
   constructor(
-    private memoryService: MemoryService
+    private memoryService: MemoryService,
+    private levelDataMap: LevelDataMap
   ) {
   }
 
   ngOnInit() {
-    this.memoryService.getPicture()
-      .subscribe((data) => {
-        this.randomPicture = URL.createObjectURL(data)
-      })
-    console.log(this.randomPicture)
+    this.levelsArray = this.levelDataMap.getMemData(
+      memoryLevelsPicAmountData.levels,
+      memoryLevelsPicAmountData.picAmount
+    )
+    console.log(this.levelsArray)
+    // this.memoryService.getPicture()
+    //   .subscribe((data) => {
+    //     this.randomPicture = URL.createObjectURL(data)
+    //   })
   }
 }

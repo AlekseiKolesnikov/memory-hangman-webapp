@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
+import {Inject} from "@angular/core";
 
-@Injectable({
+@Inject({
   providedIn: 'root'
 })
 export class LevelData {
