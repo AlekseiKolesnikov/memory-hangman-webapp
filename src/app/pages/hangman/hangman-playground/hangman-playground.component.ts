@@ -25,7 +25,6 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   gallowsArray: DataState[];
   alphabetArray: DataState[];
   wordArray: DataState[];
-  counter: object;
 
   private routeSub: Subscription;
 
