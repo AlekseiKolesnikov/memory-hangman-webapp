@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {retry, Subscription} from "rxjs";
+import {repeat, retry, Subscription} from "rxjs";
 import {MemoryService} from "./api/memory.service";
 import {LevelData} from "../../data/memory/level-data/level-data";
 
@@ -7,7 +7,7 @@ import {LevelData} from "../../data/memory/level-data/level-data";
   providedIn: 'root'
 })
 export class RandomPicFilter {
-  randomPicture: string;
+  randomPicture: Object;
   private subscription: Subscription;
 
   constructor(
@@ -25,10 +25,10 @@ export class RandomPicFilter {
 
     this.subscription = observable
       .pipe(
-
+        repeat(1)
       )
       .subscribe((data) => {
-        this.randomPicture = URL.createObjectURL(data)
+        this.randomPicture = data
       })
   }
 }
