@@ -9,11 +9,17 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 export class MemoryButtonComponent {
   @Input() buttonText: string;
   @Output() buttonClick = new EventEmitter();
-  isClicked:boolean = false;
+  isClicked: boolean = false;
   constructor() {}
 
   click(): void {
     this.isClicked = true;
+    this.buttonClick.emit()
+  }
+
+  touch(event: Event) {
+    event.preventDefault()
+    this.isClicked = true
     this.buttonClick.emit()
   }
 }

@@ -1,7 +1,10 @@
-<div>
+<div
+  class="memory-level-container"
+  [ngStyle]="gridStyle()"
+>
   <app-memory-button
-    *ngFor="let item of levelsArray"
-    buttonText="{{item.getLevel()}}"
+    *ngFor="let item of levelsDataArray"
+    (buttonClick)="onClick(item.getPicAmount())"
+    buttonText="{{item.getLevel().toString()}}"
   />
-  <img [src]="randomPicture" alt="pic">
 </div>

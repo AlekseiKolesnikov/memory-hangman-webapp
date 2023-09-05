@@ -17,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MemoryButtonComponent} from "./components/memory/memory-button.component/memory-button.component.component";
 import {GallowsComponent} from "./components/hangman/gallows/gallows.component";
 import {FinalScreenComponent} from "./pages/final-screen/final-screen.component";
+import {MemoryPlaygroundComponent} from "./pages/memory/memory-playground/memory-playground.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {FinalScreenComponent} from "./pages/final-screen/final-screen.component"
     AlphabetComponent,
     ErrorScreenComponent,
     MemoryButtonComponent,
-    FinalScreenComponent
+    FinalScreenComponent,
+    MemoryPlaygroundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"memory-button.component.component.css"}
+{"version":3,"sourceRoot":"","sources":["memory-button.component.component.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA","file":"memory-button.component.component.css"}

@@ -19,7 +19,7 @@ export class RandomWordsFilter {
     this.subscription.unsubscribe()
   }
 
-  getWord(callBack: (word: DataState[]) => void, minWordLength: number, maxWordLength: number): any {
+  getWord(callBack: (word: DataState[]) => void, minWordLength: number, maxWordLength: number): void {
     const observable = this.wordService.getWordData()
     // TODO сделать Observable типа string
     const lengthFilter = (word: Object) => {
@@ -36,7 +36,7 @@ export class RandomWordsFilter {
     this.subscription = observable
       .pipe(
         filter(lengthFilter),
-        retry(100),
+        retry(200),
       )
       .subscribe(fetchedWord => {
         const word: string = fetchedWord.toString();

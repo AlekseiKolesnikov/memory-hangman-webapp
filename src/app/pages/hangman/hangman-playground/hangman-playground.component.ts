@@ -1,13 +1,15 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {LevelLengthSettings} from "../../../services/random-word.service/level-length-settings";
-import {RandomWordsFilter} from 'src/app/services/random-word.service/random-words-filter';
+import {LevelLengthSettings} from "../../../services/hangman.service/level-length-settings";
+import {RandomWordsFilter} from 'src/app/services/hangman.service/random-words-filter';
 import {DataState} from 'src/app/data/hangman/elements-state/data-state';
 import {DataCopy} from "../../../data/hangman/elements-state/data-copy";
 import {hangmanClasses} from 'src/app/data/hangman/base/game-classes';
 import {LetterVisibility} from "../../../data/hangman/visibility/letter-visibility";
 import {MainButtonSetting} from "../../../utilit/telegram/main-button-setting";
+import {GridStyle} from "../../../styles/grid/grid-style";
+import {style} from "@angular/animations";
 
 @Component({
   selector: 'app-hangman-playground',
@@ -34,7 +36,8 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
     private getGameData: DataCopy,
     private setWordLength: LevelLengthSettings,
     private handleWord: RandomWordsFilter,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private style: GridStyle
   ) {
   }
 
@@ -65,13 +68,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
   }
 
   gridStyle() {
-    return {
-      'display': 'grid',
-      'grid-template-columns': `repeat(${this.wordArray.length}, 1fr)`,
-      'justify-items': 'center',
-      'align-items': 'center',
-      'column-gap': '0.5em'
-    }
+    return this.style.getGridStyle(this.wordArray.length);
   }
 
   matchLetters(letter: DataState) {

@@ -1,8 +1,8 @@
-<div class="memory-button">
+<div class="memory-button-container">
   <button
-    class="memory-button__button"
+    class="memory-button-container__button"
     (click)="click()"
-    (touchend)="click()"
+    (touchend)="touch($event)"
     [class.active]="isClicked"
   >
     {{buttonText}}

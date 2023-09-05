@@ -1,0 +1,7 @@
+@import "src/app/styles/patterns/element-flex/button-flex.pattern";
+
+.memory-level-container {
+  @extend %buttons-flex-container;
+
+  height: 80vh;
+}

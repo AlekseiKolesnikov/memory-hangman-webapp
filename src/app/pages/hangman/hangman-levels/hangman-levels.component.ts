@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./hangman-levels.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HangmanLevelsComponent implements OnInit {
+export class HangmanLevelsComponent {
   constructor(
     private router: Router
   ) {
@@ -15,9 +15,5 @@ export class HangmanLevelsComponent implements OnInit {
 
   onClick(level: string): void {
     this.router.navigate(['hangman-playground', {id: level}]);
-  }
-
-  ngOnInit(): void {
-    this.router.navigate(['hangman-levels']);
   }
 }

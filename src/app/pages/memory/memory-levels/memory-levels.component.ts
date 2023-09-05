@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MemoryService} from "../../../services/memory.service/api/memory.service";
+import {Router} from "@angular/router";
 import {LevelData} from "../../../data/memory/level-data/level-data";
-import {LevelDataMap} from "../../../data/memory/level-data/level-data-map";
 import {memoryLevelsPicAmountData} from "../../../data/memory/base/levels-pictures-amount";
+import {LevelDataMap} from "../../../data/memory/level-data/level-data-map";
+import {GridStyle} from "../../../styles/grid/grid-style";
 
 @Component({
   selector: 'app-memory-levels',
@@ -11,24 +12,25 @@ import {memoryLevelsPicAmountData} from "../../../data/memory/base/levels-pictur
   encapsulation: ViewEncapsulation.None
 })
 export class MemoryLevelsComponent implements OnInit {
-  public levelsArray: LevelData[]
-  public picAmountArray: LevelData[]
-  randomPicture: string
+  levelsDataArray: LevelData[]
   constructor(
-    private memoryService: MemoryService,
-    private levelDataMap: LevelDataMap
-  ) {
-  }
+    private levelDataMap: LevelDataMap,
+    private style: GridStyle,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.levelsArray = this.levelDataMap.getMemData(
+    this.levelsDataArray = this.levelDataMap.getMemData(
       memoryLevelsPicAmountData.levels,
       memoryLevelsPicAmountData.picAmount
     )
-    console.log(this.levelsArray)
-    // this.memoryService.getPicture()
-    //   .subscribe((data) => {
-    //     this.randomPicture = URL.createObjectURL(data)
-    //   })
+  }
+
+  onClick(picAmount: number): void {
+    this.router.navigate(['memory-playground', {id: picAmount}])
+  }
+
+  gridStyle() {
+    return this.style.getGridStyle(3);
   }
 }
