@@ -1,19 +1,17 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {RandomPath} from "./random-path";
 import {Observable} from "rxjs";
+import {IMemoryService} from "../../../types/memory/memory-service.type";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemoryService {
   constructor(
-    private http: HttpClient,
-    private randomPath: RandomPath
-  ) {
+    private http: HttpClient) {
   }
 
-  getPicture(): Observable<object> {
-    return this.http.get<Object>(`https://emojihub.yurace.pro/api/random/group/animal-bird`);
+  getPicture(): Observable<IMemoryService> {
+    return this.http.get<IMemoryService>(`https://emojihub.yurace.pro/api/random/group/animal-bird`);
   }
 }

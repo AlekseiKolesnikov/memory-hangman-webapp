@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RandomPicFilter} from "../../../services/memory.service/random-pic-filter";
-import {LevelData} from "../../../data/memory/level-data/level-data";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
+import {PictureDataset} from "../../../data/memory/picture-dataset/picture-dataset";
 
 @Component({
   selector: 'app-memory-playground',
@@ -10,8 +10,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./memory-playground.component.scss']
 })
 export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
-  levelsDataArray: LevelData[]
-  randomEmoji: LevelData[]
+  randomEmoji: PictureDataset[]
   picAmount: number
 
   private routeSub: Subscription;
@@ -29,11 +28,7 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
 
     this.randomPicFilter.getPic((emoji) => {
       this.randomEmoji = emoji
-    }, this.levelsDataArray)
-    // this.memoryService.getPicture()
-    //   .subscribe((data) => {
-    //     this.randomPicture = URL.createObjectURL(data)
-    //   })
+    }, this.picAmount)
   }
 
   ngOnDestroy() {

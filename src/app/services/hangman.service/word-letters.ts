@@ -17,7 +17,7 @@ export class WordLetters {
       }
     }
     return array.map<DataState>((value, _0, _1) => {
-      return new DataState(value,);
+      return new DataState(value);
     });
   }
 }

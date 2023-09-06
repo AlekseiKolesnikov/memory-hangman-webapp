@@ -1,17 +1,20 @@
 import {Injectable} from "@angular/core";
-import {repeat, retry, Subscription} from "rxjs";
+import {repeat, Subscription} from "rxjs";
 import {MemoryService} from "./api/memory.service";
-import {LevelData} from "../../data/memory/level-data/level-data";
+import {PicturesArray} from "./pictures-array";
+import {PictureDataset} from "../../data/memory/picture-dataset/picture-dataset";
+import {IMemoryService} from "../../types/memory/memory-service.type";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RandomPicFilter {
-  randomPicture: Object;
+  randomPictureData: IMemoryService[] = [];
   private subscription: Subscription;
 
   constructor(
-    private memoryService: MemoryService
+    private memoryService: MemoryService,
+    private picturesArray: PicturesArray
   ) {
   }
 
@@ -19,16 +22,26 @@ export class RandomPicFilter {
     this.subscription.unsubscribe()
   }
 
-  getPic(callBack: (picture: LevelData[]) => void, levelAndPicAmount: LevelData[]): void {
+  getPic(callBack: (pictureData: PictureDataset[]) => void, levelAndPicAmount: number): void {
     const observable = this.memoryService.getPicture()
 
+    const observer = {
+      next: (data: IMemoryService) => {
+        this.randomPictureData.push(data)
+      },
+      error: (error: Error) => {
+        console.log(error)
+      },
+      complete: () => {
+        console.log('complete')
+        callBack(this.picturesArray.getPicDataArray(this.randomPictureData))
+      }
+    }
 
     this.subscription = observable
       .pipe(
-        repeat(1)
+        repeat(levelAndPicAmount)
       )
-      .subscribe((data) => {
-        this.randomPicture = data
-      })
+      .subscribe(observer)
   }
 }
