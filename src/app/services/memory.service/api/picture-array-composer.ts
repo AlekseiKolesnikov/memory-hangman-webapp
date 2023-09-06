@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {IMemoryService} from "../../../types/memory/memory-service.type";
+import {PictureDataset} from "../../../data/memory/picture-dataset/picture-dataset";
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,12 @@ import {IMemoryService} from "../../../types/memory/memory-service.type";
 export class PictureArrayComposer {
   constructor() { }
 
-  mixDoubleArray(picArray: IMemoryService[]) {
-    const doubleArray = [...picArray, ...picArray]
-
-    for (let i = doubleArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [doubleArray[i], doubleArray[j]] = [doubleArray[j], doubleArray[i]];
-    }
-    return doubleArray
+  convertPicArray(picturesArray: IMemoryService[]): PictureDataset[] {
+    return picturesArray.map<PictureDataset>((value) => {
+      const name = value.name.toString()
+      const emoji = value.htmlCode.toString()
+      const backSide = '?'
+      return new PictureDataset(name, emoji, backSide)
+    })
   }
 }

@@ -26,8 +26,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
       this.picAmount = params['id'];
     })
 
-    this.randomPicFilter.getPic((emoji) => {
-      this.randomEmoji = emoji
+    this.randomPicFilter.getPic((data) => {
+      this.randomEmoji = data
     }, this.picAmount)
   }
 

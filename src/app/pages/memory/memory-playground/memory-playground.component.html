@@ -1,3 +1,6 @@
-<div>
-  <span>{{randomEmoji}}</span>
+<div
+  class="memory-playground"
+  *ngFor="let item of randomEmoji"
+>
+  <p>{{item.getEmoji().toString()}}</p>
 </div>

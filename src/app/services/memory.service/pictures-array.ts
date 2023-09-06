@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {PictureDataset} from "../../data/memory/picture-dataset/picture-dataset";
 import {PictureArrayComposer} from "./api/picture-array-composer";
 import {IMemoryService} from "../../types/memory/memory-service.type";
 
@@ -10,8 +11,14 @@ export class PicturesArray {
     private pictureArrayComposer: PictureArrayComposer
   ) { }
 
-  getPicDataArray(picturesArray: IMemoryService[]): any {
-    const finalArray = this.pictureArrayComposer.mixDoubleArray(picturesArray)
-    console.log(finalArray);
+  getPicDataArray(picturesArray: IMemoryService[]): PictureDataset[] {
+    const picArray = this.pictureArrayComposer.convertPicArray(picturesArray)
+    const doubleArray = [...picArray, ...picArray]
+
+    for (let i = doubleArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [doubleArray[i], doubleArray[j]] = [doubleArray[j], doubleArray[i]];
+    }
+    return doubleArray
   }
 }
