@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {repeat, Subscription} from "rxjs";
+import {distinct, repeat, Subscription} from "rxjs";
 import {MemoryService} from "./api/memory.service";
 import {PicturesArray} from "./pictures-array";
 import {PictureDataset} from "../../data/memory/picture-dataset/picture-dataset";
@@ -40,6 +40,7 @@ export class RandomPicFilter {
 
     this.subscription = observable
       .pipe(
+        distinct(),
         repeat(levelAndPicAmount)
       )
       .subscribe(observer)

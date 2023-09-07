@@ -12,6 +12,6 @@ export class MemoryService {
   }
 
   getPicture(): Observable<IMemoryService> {
-    return this.http.get<IMemoryService>(`https://emojihub.yurace.pro/api/random/group/animal-bird`);
+    return this.http.get<IMemoryService>(`https://emojihub.yurace.pro/api/random/category/animals-and-nature`);
   }
 }

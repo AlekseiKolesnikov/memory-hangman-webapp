@@ -2,5 +2,9 @@
   class="memory-playground"
   *ngFor="let item of randomEmoji"
 >
-  <p>{{item.getEmoji().toString()}}</p>
+  <p
+
+  >
+    {{String.fromCodePoint(filterUCode(item.getEmoji()))}}
+  </p>
 </div>

@@ -11,7 +11,7 @@ export class PictureArrayComposer {
   convertPicArray(picturesArray: IMemoryService[]): PictureDataset[] {
     return picturesArray.map<PictureDataset>((value) => {
       const name = value.name.toString()
-      const emoji = value.htmlCode.toString()
+      const emoji = value.unicode.toString()
       const backSide = '?'
       return new PictureDataset(name, emoji, backSide)
     })

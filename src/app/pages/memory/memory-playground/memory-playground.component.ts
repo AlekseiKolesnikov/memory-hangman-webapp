@@ -35,4 +35,14 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     this.routeSub.unsubscribe()
     this.randomPicFilter.destroySubscription()
   }
+
+  filterUCode(code: string): number {
+    let codeStr ='0x'
+    console.log(code)
+    let cod = codeStr.concat(code.substring(2))
+    console.log(cod)
+    return +cod
+  }
+
+  protected readonly String = String;
 }
