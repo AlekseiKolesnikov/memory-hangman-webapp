@@ -20,6 +20,7 @@ export class RandomPicFilter {
 
   destroySubscription() {
     this.subscription.unsubscribe()
+    this.randomPictureData = []
   }
 
   getPic(callBack: (pictureData: PictureDataset[]) => void, levelAndPicAmount: number): void {

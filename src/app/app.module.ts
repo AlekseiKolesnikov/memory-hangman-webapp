@@ -18,6 +18,7 @@ import {MemoryButtonComponent} from "./components/memory/memory-button.component
 import {GallowsComponent} from "./components/hangman/gallows/gallows.component";
 import {FinalScreenComponent} from "./pages/final-screen/final-screen.component";
 import {MemoryPlaygroundComponent} from "./pages/memory/memory-playground/memory-playground.component";
+import {MemoryCardComponent} from "./components/memory/memory-card.component/memory-card.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MemoryPlaygroundComponent} from "./pages/memory/memory-playground/memory
     ErrorScreenComponent,
     MemoryButtonComponent,
     FinalScreenComponent,
-    MemoryPlaygroundComponent
+    MemoryPlaygroundComponent,
+    MemoryCardComponent
   ],
   imports: [
     BrowserModule,

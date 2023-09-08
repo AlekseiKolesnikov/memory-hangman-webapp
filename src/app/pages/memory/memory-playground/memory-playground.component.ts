@@ -37,10 +37,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   }
 
   filterUCode(code: string): number {
-    let codeStr ='0x'
-    console.log(code)
+    let codeStr = '0x'
     let cod = codeStr.concat(code.substring(2))
-    console.log(cod)
     return +cod
   }
 

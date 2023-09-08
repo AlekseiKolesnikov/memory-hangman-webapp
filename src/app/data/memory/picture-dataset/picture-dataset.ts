@@ -18,7 +18,7 @@ export class PictureDataset {
     return this.emoji
   }
 
-  getBackSideImg(): string {
+  getFrontSideImg(): string {
     return this.backSideImg
   }
 }
