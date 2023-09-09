@@ -4,7 +4,7 @@
 >
   <app-memory-button
     *ngFor="let item of levelsDataArray"
-    (buttonClick)="onClick(item.getPicAmount())"
+    (buttonClick)="onClick(item.getPicAmount(), item.getGridRepetition())"
     buttonText="{{item.getLevel().toString()}}"
   />
 </div>

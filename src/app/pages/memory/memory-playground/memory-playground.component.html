@@ -1,16 +1,21 @@
 <div
-  class="memory-playground"
+  class="game-container"
 >
   <div *ngIf="!loading">
     <app-loader/>
   </div>
 
   <div
-    *ngFor="let item of randomEmoji"
+    [ngStyle]="gridStyle()"
+    class="memory-playground"
   >
-    <app-memory-card
-      frontEmoji="{{item.getFrontSideImg()}}"
-      backEmoji="{{item.getEmoji()}}"
-    />
+    <div
+      *ngFor="let item of randomEmoji"
+    >
+      <app-memory-card
+        frontEmoji="{{item.getFrontSideImg()}}"
+        backEmoji="{{item.getEmoji()}}"
+      />
+    </div>
   </div>
 </div>

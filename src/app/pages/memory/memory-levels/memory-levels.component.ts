@@ -22,12 +22,13 @@ export class MemoryLevelsComponent implements OnInit {
   ngOnInit() {
     this.levelsDataArray = this.levelDataMap.getMemData(
       memoryLevelsPicAmountData.levels,
-      memoryLevelsPicAmountData.picAmount
+      memoryLevelsPicAmountData.picAmount,
+      memoryLevelsPicAmountData.gridRepetition
     )
   }
 
-  onClick(picAmount: number): void {
-    this.router.navigate(['memory-playground', {id: picAmount}])
+  onClick(picAmount: number, gridRep: number): void {
+    this.router.navigate(['memory-playground', {id: picAmount, grid: gridRep}])
   }
 
   gridStyle() {

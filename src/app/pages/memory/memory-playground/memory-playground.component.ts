@@ -3,6 +3,7 @@ import {RandomPicFilter} from "../../../services/memory.service/random-pic-filte
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {PictureDataset} from "../../../data/memory/picture-dataset/picture-dataset";
+import {GridStyle} from "../../../styles/grid/grid-style";
 
 @Component({
   selector: 'app-memory-playground',
@@ -12,24 +13,26 @@ import {PictureDataset} from "../../../data/memory/picture-dataset/picture-datas
 export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   randomEmoji: PictureDataset[]
   picAmount: number
+  gridRep: number
   loading: boolean = false;
 
   private routeSub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private randomPicFilter: RandomPicFilter
+    private randomPicFilter: RandomPicFilter,
+    private style: GridStyle
   ) {
   }
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.picAmount = params['id'];
+      this.gridRep = params['grid'];
     })
 
     this.randomPicFilter.getPic((data) => {
       this.randomEmoji = data
-      console.log(this.randomEmoji);
       this.loading = true;
     }, this.picAmount)
   }
@@ -39,11 +42,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     this.randomPicFilter.destroySubscription()
   }
 
-  // filterUCode(code: string): number {
-  //   let codeStr = '0x'
-  //   let cod = codeStr.concat(code.substring(2))
-  //   return +cod
-  // }
-
-  // protected readonly String = String;
+  gridStyle() {
+    console.log(this.gridRep)
+    return this.style.getGridStyle(this.gridRep, 0.5);
+  }
 }

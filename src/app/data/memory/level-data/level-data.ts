@@ -6,7 +6,8 @@ import {Inject} from "@angular/core";
 export class LevelData {
   constructor(
     private level: number,
-    private picAmount: number
+    private picAmount: number,
+    private gridRep: number
   ) { }
 
   getLevel(): number {
@@ -16,4 +17,9 @@ export class LevelData {
   getPicAmount(): number {
     return this.picAmount / 2
   }
+
+  getGridRepetition(): number {
+    return this.gridRep
+  }
+
 }
