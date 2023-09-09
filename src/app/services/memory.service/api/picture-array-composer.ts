@@ -8,12 +8,13 @@ import {PictureDataset} from "../../../data/memory/picture-dataset/picture-datas
 export class PictureArrayComposer {
   constructor() { }
 
-  convertPicArray(picturesArray: IMemoryService[]): PictureDataset[] {
-    return picturesArray.map<PictureDataset>((value) => {
-      const name = value.name.toString()
-      const emoji = value.unicode.toString()
+  convertPicArray(picturesArray: IMemoryService[], picAmount: number): PictureDataset[] {
+
+    return picturesArray.slice(0, picAmount).map<PictureDataset>((value) => {
+      const code = value.code.toString()
+      const emoji = value.character.toString()
       const backSide = '?'
-      return new PictureDataset(name, emoji, backSide)
+      return new PictureDataset(code, emoji, backSide)
     })
   }
 }

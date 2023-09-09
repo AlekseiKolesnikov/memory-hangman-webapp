@@ -1,9 +1,16 @@
 <div
   class="memory-playground"
-  *ngFor="let item of randomEmoji"
 >
-  <app-memory-card
-    frontEmoji="{{item.getFrontSideImg()}}"
-    backEmoji="{{String.fromCodePoint(filterUCode(item.getEmoji()))}}"
-  />
+  <div *ngIf="!loading">
+    <app-loader/>
+  </div>
+
+  <div
+    *ngFor="let item of randomEmoji"
+  >
+    <app-memory-card
+      frontEmoji="{{item.getFrontSideImg()}}"
+      backEmoji="{{item.getEmoji()}}"
+    />
+  </div>
 </div>

@@ -12,6 +12,7 @@ import {PictureDataset} from "../../../data/memory/picture-dataset/picture-datas
 export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   randomEmoji: PictureDataset[]
   picAmount: number
+  loading: boolean = false;
 
   private routeSub: Subscription;
 
@@ -28,6 +29,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
 
     this.randomPicFilter.getPic((data) => {
       this.randomEmoji = data
+      console.log(this.randomEmoji);
+      this.loading = true;
     }, this.picAmount)
   }
 
@@ -36,11 +39,11 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     this.randomPicFilter.destroySubscription()
   }
 
-  filterUCode(code: string): number {
-    let codeStr = '0x'
-    let cod = codeStr.concat(code.substring(2))
-    return +cod
-  }
+  // filterUCode(code: string): number {
+  //   let codeStr = '0x'
+  //   let cod = codeStr.concat(code.substring(2))
+  //   return +cod
+  // }
 
-  protected readonly String = String;
+  // protected readonly String = String;
 }

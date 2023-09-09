@@ -1,7 +1,8 @@
 export interface IMemoryService {
+  code: string,
+  character: string,
+  image: string,
   name: string,
-  category: string,
   group: string,
-  htmlCode: [string],
-  unicode: [string]
+  subgroup: string
 }

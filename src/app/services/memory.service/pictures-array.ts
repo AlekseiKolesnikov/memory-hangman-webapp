@@ -11,8 +11,8 @@ export class PicturesArray {
     private pictureArrayComposer: PictureArrayComposer
   ) { }
 
-  getPicDataArray(picturesArray: IMemoryService[]): PictureDataset[] {
-    const picArray = this.pictureArrayComposer.convertPicArray(picturesArray)
+  getPicDataArray(picturesArray: IMemoryService[], picAmount: number): PictureDataset[] {
+    const picArray = this.pictureArrayComposer.convertPicArray(picturesArray, picAmount)
     const doubleArray = [...picArray, ...picArray]
 
     for (let i = doubleArray.length - 1; i > 0; i--) {
