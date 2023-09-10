@@ -19,6 +19,7 @@ import {GallowsComponent} from "./components/hangman/gallows/gallows.component";
 import {FinalScreenComponent} from "./pages/final-screen/final-screen.component";
 import {MemoryPlaygroundComponent} from "./pages/memory/memory-playground/memory-playground.component";
 import {MemoryCardComponent} from "./components/memory/memory-card.component/memory-card.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MemoryCardComponent} from "./components/memory/memory-card.component/mem
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

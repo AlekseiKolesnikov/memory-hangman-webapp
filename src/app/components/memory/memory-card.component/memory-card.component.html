@@ -1,12 +1,20 @@
-<div class="card-wrapper">
-  <div class="front-card-box">
-    <p class="front-card-box-text">
-      {{frontEmoji}}
-    </p>
-  </div>
-  <div class="back-card-box">
-    <p class="back-card-box-text">
-      {{backEmoji}}
-    </p>
+<div
+  class="card-wrapper"
+  (click)="toggleFlip()"
+>
+  <div
+    [@flipState]="flip"
+    class="card-box"
+  >
+    <div class="card-side front-card-box">
+      <p class="front-card-box-text">
+        {{frontEmoji}}
+      </p>
+    </div>
+    <div class="card-side back-card-box">
+      <p class="back-card-box-text">
+        {{backEmoji}}
+      </p>
+    </div>
   </div>
 </div>

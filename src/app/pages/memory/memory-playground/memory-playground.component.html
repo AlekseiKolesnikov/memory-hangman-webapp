@@ -13,6 +13,7 @@
       *ngFor="let item of randomEmoji"
     >
       <app-memory-card
+        (buttonClick)="onClick()"
         frontEmoji="{{item.getFrontSideImg()}}"
         backEmoji="{{item.getEmoji()}}"
       />

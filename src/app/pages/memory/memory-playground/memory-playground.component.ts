@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {RandomPicFilter} from "../../../services/memory.service/random-pic-filter";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
@@ -8,7 +8,8 @@ import {GridStyle} from "../../../styles/grid/grid-style";
 @Component({
   selector: 'app-memory-playground',
   templateUrl: './memory-playground.component.html',
-  styleUrls: ['./memory-playground.component.scss']
+  styleUrls: ['./memory-playground.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   randomEmoji: PictureDataset[]
@@ -42,8 +43,10 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     this.randomPicFilter.destroySubscription()
   }
 
+  onClick() {
+
+  }
   gridStyle() {
-    console.log(this.gridRep)
-    return this.style.getGridStyle(this.gridRep, 0.5);
+    return this.style.getGridStyle(this.gridRep, 0.6);
   }
 }
