@@ -16,6 +16,10 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   picAmount: number
   gridRep: number
   loading: boolean = false;
+  firstCard: boolean = false;
+  secondCard: boolean = false;
+  firstCardIndex: number = 0;
+  secondCardIndex: number = 0;
 
   private routeSub: Subscription;
 
@@ -41,6 +45,32 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeSub.unsubscribe()
     this.randomPicFilter.destroySubscription()
+  }
+
+  isClicked(card: PictureDataset, cardIndex: number) {
+    if (!card.getMatchState()) {
+      if (!this.firstCard) {
+        this.firstCard = true
+        this.firstCardIndex = cardIndex
+      } else {
+        const firstCard = this.randomEmoji[this.firstCardIndex]
+        const secondCard = this.randomEmoji[this.secondCardIndex]
+
+        this.secondCard = true
+        this.secondCardIndex = cardIndex
+
+        if (firstCard.getName() === secondCard.getName() && firstCard !== secondCard) {
+          firstCard.updateMatchState(true)
+          secondCard.updateMatchState(true)
+          console.log(this.randomEmoji)
+          this.firstCard = false
+        } else {
+          this.firstCard = false
+          this.secondCard = false
+          console.log('not matched')
+        }
+      }
+    }
   }
 
   gridStyle() {

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {booleanAttribute, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -23,20 +23,29 @@ export class MemoryCardComponent implements OnInit {
   @Input() frontEmoji: string;
   @Input() backEmoji: string;
   @Input() emojiName: string;
+  @Input({transform: booleanAttribute}) secondCardState: boolean;
+  @Input({transform: booleanAttribute}) firstCardState: boolean;
   @Output() buttonClick = new EventEmitter();
 
-  cardMatch: string[] = []
   flip: string = 'inactive'
-  match: boolean = false
   constructor() { }
 
   ngOnInit() {
   }
 
   toggleFlip() {
-    this.cardMatch.push(this.emojiName)
-    this.flip = (this.flip === 'inactive') ? 'active' : 'inactive';
     this.buttonClick.emit()
-    console.log(this.cardMatch)
+
+    if (this.flip === 'inactive') {
+      this.flip = 'active'
+    }
+    if (this.flip === 'active' && this.firstCardState && !this.secondCardState) {
+      setTimeout(() => {
+        this.flip = 'inactive'
+      }, 1000)
+    }
+    if (this.flip === 'active' && this.firstCardState && this.secondCardState) {
+      this.flip = 'active'
+    }
   }
 }

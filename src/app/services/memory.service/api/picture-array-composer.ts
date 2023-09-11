@@ -19,7 +19,8 @@ export class PictureArrayComposer {
       const code = value.code.toString()
       const emoji = value.character.toString()
       const backSide = '?'
-      return new PictureDataset(code, emoji, backSide)
+      const matchState = false
+      return new PictureDataset(code, emoji, backSide, matchState)
     })
   }
 }
