@@ -9,8 +9,13 @@ export class PictureArrayComposer {
   constructor() { }
 
   convertPicArray(picturesArray: IMemoryService[], picAmount: number): PictureDataset[] {
+    const shuffled = picturesArray.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+    }
 
-    return picturesArray.slice(0, picAmount).map<PictureDataset>((value) => {
+    return shuffled.slice(0, picAmount).map<PictureDataset>((value) => {
       const code = value.code.toString()
       const emoji = value.character.toString()
       const backSide = '?'

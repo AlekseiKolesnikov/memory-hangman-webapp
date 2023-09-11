@@ -22,16 +22,21 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
 export class MemoryCardComponent implements OnInit {
   @Input() frontEmoji: string;
   @Input() backEmoji: string;
+  @Input() emojiName: string;
   @Output() buttonClick = new EventEmitter();
 
+  cardMatch: string[] = []
   flip: string = 'inactive'
+  match: boolean = false
   constructor() { }
 
   ngOnInit() {
   }
 
   toggleFlip() {
+    this.cardMatch.push(this.emojiName)
     this.flip = (this.flip === 'inactive') ? 'active' : 'inactive';
     this.buttonClick.emit()
+    console.log(this.cardMatch)
   }
 }

@@ -43,9 +43,6 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     this.randomPicFilter.destroySubscription()
   }
 
-  onClick() {
-
-  }
   gridStyle() {
     return this.style.getGridStyle(this.gridRep, 0.6);
   }
