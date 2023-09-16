@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {PictureDataset} from "../../data/memory/picture-dataset/picture-dataset";
+import {Card} from "../../data/memory/card";
 import {PictureArrayComposer} from "./api/picture-array-composer";
 import {IMemoryService} from "../../types/memory/memory-service.type";
 
@@ -11,7 +11,7 @@ export class PicturesArray {
     private pictureArrayComposer: PictureArrayComposer
   ) { }
 
-  getPicDataArray(picturesArray: IMemoryService[], picAmount: number): PictureDataset[] {
+  getPicDataArray(picturesArray: IMemoryService[], picAmount: number): Card[] {
     const picArray = this.pictureArrayComposer.convertPicArray(picturesArray, picAmount)
     const doubleArray = [...picArray, ...picArray]
 
@@ -19,6 +19,12 @@ export class PicturesArray {
       const j = Math.floor(Math.random() * (i + 1));
       [doubleArray[i], doubleArray[j]] = [doubleArray[j], doubleArray[i]];
     }
-    return doubleArray
+    return doubleArray.map<Card>((value) => {
+      const emoji = value.character.toString()
+      const backSide = '?'
+      const matched = false
+      const flipped = false
+      return new Card(emoji, backSide, flipped, matched)
+    })
   }
 }

@@ -20,7 +20,7 @@ export class LevelLengthSettings {
       minLength = 0;
       maxLength = 4;
     } else {
-      throw new Error('Invalid level');
+      throw new Error('Invalid levelData');
     }
 
     return {

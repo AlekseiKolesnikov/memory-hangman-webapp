@@ -1,5 +1,7 @@
-import {booleanAttribute, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {Card} from "../../../data/memory/card";
+import {CardState} from "../../../data/memory/card-state/card-state";
 
 @Component({
   selector: 'app-memory-card',
@@ -19,33 +21,53 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class MemoryCardComponent implements OnInit {
-  @Input() frontEmoji: string;
-  @Input() backEmoji: string;
-  @Input() emojiName: string;
-  @Input({transform: booleanAttribute}) secondCardState: boolean;
-  @Input({transform: booleanAttribute}) firstCardState: boolean;
-  @Output() buttonClick = new EventEmitter();
+export class MemoryCardComponent {
+  @Input() card: Card;
+  @Input() cardIndex: number;
+  @Input() cardsArray: Card[];
 
-  flip: string = 'inactive'
+  flip: string = 'active'
+  firstCardIndex: number = 0;
+  secondCardIndex: number = 0;
+  winCount: number = 0;
+  cardState: CardState
+
   constructor() { }
 
-  ngOnInit() {
+  toggleFlip(index: number, cards: Card[]) {
+    this.cardState.updateFirstCardState(true)
+    console.log(this.cardState.getFirstCardState());
+    this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
+    console.log(cards);
+    if (!cards[index].getFlipped()) {
+      console.log('first')
+      cards[index].updateFlipped(true)
+      this.firstCardIndex = index
+    } else {
+      console.log('second')
+      cards[index].updateFlipped(true)
+      this.secondCardIndex = index
+
+      const firstCard = cards[this.firstCardIndex]
+      const secondCard = cards[this.secondCardIndex]
+
+      console.log(this.firstCardIndex);
+      console.log(this.secondCardIndex);
+      if (firstCard.getEmoji().toString() === secondCard.getEmoji().toString() &&
+        this.firstCardIndex !== this.secondCardIndex) {
+        firstCard.updateMatched(true)
+        secondCard.updateMatched(true)
+        this.winCount += 1;
+        console.log(cards);
+      } else {
+        cards[this.firstCardIndex].updateFlipped(false)
+        cards[this.secondCardIndex].updateFlipped(false)
+        console.log(cards);
+        setTimeout(() => {
+
+        }, 1000)
+      }
+    }
   }
 
-  toggleFlip() {
-    this.buttonClick.emit()
-
-    if (this.flip === 'inactive') {
-      this.flip = 'active'
-    }
-    if (this.flip === 'active' && this.firstCardState && !this.secondCardState) {
-      setTimeout(() => {
-        this.flip = 'inactive'
-      }, 1000)
-    }
-    if (this.flip === 'active' && this.firstCardState && this.secondCardState) {
-      this.flip = 'active'
-    }
-  }
 }

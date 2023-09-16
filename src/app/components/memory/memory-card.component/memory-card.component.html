@@ -1,19 +1,19 @@
 <div
   class="card-wrapper"
-  (click)="toggleFlip()"
+  (click)="toggleFlip(cardIndex, cardsArray)"
 >
   <div
     [@flipState]="flip"
-    class="card-box"
+    class="card"
   >
-    <div class="card-side front-card-box">
-      <p class="front-card-box-text">
-        {{frontEmoji}}
+    <div class="front">
+      <p class="front-text">
+        {{card.getFrontSideImg()}}
       </p>
     </div>
-    <div class="card-side back-card-box">
-      <p class="back-card-box-text">
-        {{backEmoji}}
+    <div class="back">
+      <p class="back-text">
+        {{card.getEmoji()}}
       </p>
     </div>
   </div>

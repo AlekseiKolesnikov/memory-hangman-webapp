@@ -45,7 +45,7 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
     if (isButton === 'restart') {
       this.router.navigate(['hangman-playground', {id: this.level}]);
     }
-    if (isButton === 'change-level') {
+    if (isButton === 'change-levelData') {
       this.router.navigate(['hangman-levels']);
     }
   }
@@ -55,7 +55,7 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
     if (isButton === 'restart') {
       this.router.navigate(['hangman-playground', {id: this.level}]);
     }
-    if (isButton === 'change-level') {
+    if (isButton === 'change-levelData') {
       this.router.navigate(['hangman-levels']);
     }
   }

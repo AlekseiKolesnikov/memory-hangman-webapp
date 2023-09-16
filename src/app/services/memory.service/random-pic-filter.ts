@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Subscription} from "rxjs";
 import {MemoryService} from "./api/memory.service";
 import {PicturesArray} from "./pictures-array";
-import {PictureDataset} from "../../data/memory/picture-dataset/picture-dataset";
+import {Card} from "../../data/memory/card";
 import {IMemoryService} from "../../types/memory/memory-service.type";
 
 @Injectable({
@@ -23,7 +23,7 @@ export class RandomPicFilter {
     this.randomPictureData = []
   }
 
-  getPic(callBack: (pictureData: PictureDataset[]) => void, levelAndPicAmount: number): void {
+  getPic(callBack: (pictureData: Card[]) => void, levelAndPicAmount: number): void {
     const observable = this.memoryService.getPicture()
 
     this.subscription = observable

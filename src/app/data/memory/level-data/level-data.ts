@@ -1,25 +1,11 @@
-import {Inject} from "@angular/core";
+interface ILevel {
+  levels: number[],
+  picAmount: number[],
+  gridRepetition: number[]
+}
 
-@Inject({
-  providedIn: 'root'
-})
-export class LevelData {
-  constructor(
-    private level: number,
-    private picAmount: number,
-    private gridRep: number
-  ) { }
-
-  getLevel(): number {
-    return this.level
-  }
-
-  getPicAmount(): number {
-    return this.picAmount / 2
-  }
-
-  getGridRepetition(): number {
-    return this.gridRep
-  }
-
+export const levelData: ILevel = {
+  levels: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  picAmount: [4, 6, 12, 16, 20, 25, 30, 36, 40],
+  gridRepetition: [2, 2, 3, 4, 4, 5, 5, 5, 5]
 }

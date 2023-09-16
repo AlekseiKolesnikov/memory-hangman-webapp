@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
-import {LevelData} from "../../../data/memory/level-data/level-data";
-import {memoryLevelsPicAmountData} from "../../../data/memory/base/levels-pictures-amount";
+import {Level} from "../../../data/memory/level-data/level";
+import {levelData} from "../../../data/memory/level-data/level-data";
 import {LevelDataMap} from "../../../data/memory/level-data/level-data-map";
 import {GridStyle} from "../../../styles/grid/grid-style";
 
@@ -12,7 +12,7 @@ import {GridStyle} from "../../../styles/grid/grid-style";
   encapsulation: ViewEncapsulation.None
 })
 export class MemoryLevelsComponent implements OnInit {
-  levelsDataArray: LevelData[]
+  levelsDataArray: Level[]
   constructor(
     private levelDataMap: LevelDataMap,
     private style: GridStyle,
@@ -21,9 +21,9 @@ export class MemoryLevelsComponent implements OnInit {
 
   ngOnInit() {
     this.levelsDataArray = this.levelDataMap.getMemData(
-      memoryLevelsPicAmountData.levels,
-      memoryLevelsPicAmountData.picAmount,
-      memoryLevelsPicAmountData.gridRepetition
+      levelData.levels,
+      levelData.picAmount,
+      levelData.gridRepetition
     )
   }
 

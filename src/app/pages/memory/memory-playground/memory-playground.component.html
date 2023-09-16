@@ -13,14 +13,9 @@
       *ngFor="let item of randomEmoji; let currentIndex = index"
     >
       <app-memory-card
-        (buttonClick)="isClicked(
-        item,
-        currentIndex)"
-        emojiName="{{item.getName().toString()}}"
-        frontEmoji="{{item.getFrontSideImg()}}"
-        backEmoji="{{item.getEmoji()}}"
-        firstCardState="{{this.firstCard}}"
-        secondCardState="{{this.secondCard}}"
+        [card]="item"
+        [cardIndex]="currentIndex"
+        [cardsArray]="randomEmoji"
       />
     </div>
   </div>

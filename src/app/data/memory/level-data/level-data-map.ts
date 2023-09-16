@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {LevelData} from "./level-data";
+import {Level} from "./level";
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +7,11 @@ import {LevelData} from "./level-data";
 export class LevelDataMap {
   constructor() { }
 
-  getMemData(levelsArray: number[], picAmountArray: number[], gridRepetition: number[]): LevelData[] {
-    return levelsArray.map<LevelData>((level, index, _1) => {
+  getMemData(levelsArray: number[], picAmountArray: number[], gridRepetition: number[]): Level[] {
+    return levelsArray.map<Level>((level, index, _1) => {
       const picAmount = picAmountArray[index]
       const grid = gridRepetition[index]
-        return new LevelData(level, picAmount, grid)
+        return new Level(level, picAmount, grid)
     })
   }
 }

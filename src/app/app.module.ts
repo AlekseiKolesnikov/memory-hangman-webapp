@@ -20,6 +20,7 @@ import {FinalScreenComponent} from "./pages/final-screen/final-screen.component"
 import {MemoryPlaygroundComponent} from "./pages/memory/memory-playground/memory-playground.component";
 import {MemoryCardComponent} from "./components/memory/memory-card.component/memory-card.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CardState} from "./data/memory/card-state/card-state";
 
 @NgModule({
   declarations: [
