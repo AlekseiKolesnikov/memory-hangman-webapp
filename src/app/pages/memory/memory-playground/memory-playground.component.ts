@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {RandomPicFilter} from "../../../services/memory.service/random-pic-filter";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {Card} from "../../../data/memory/card";
 import {GridStyle} from "../../../styles/grid/grid-style";
@@ -16,7 +16,7 @@ import {MainButtonSetting} from "../../../utilit/telegram/main-button-setting";
 })
 export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   randomEmoji: Card[];
-  picAmount: number
+  pictureAmount: number
   gridRep: number
   loading: boolean = false;
   flipCard: Flip
@@ -32,7 +32,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     private mainButton: MainButtonSetting,
     private route: ActivatedRoute,
     private randomPicFilter: RandomPicFilter,
-    private style: GridStyle
+    private style: GridStyle,
+    private router: Router
   ) {
     this.flipCard = new Flip()
     this.cardState = new CardState(false, false)
@@ -40,7 +41,7 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
-      this.picAmount = params['id'];
+      this.pictureAmount = params['level'];
       this.gridRep = params['grid'];
     })
 
@@ -48,8 +49,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
       this.randomEmoji = data
       this.pairsAmount = this.randomEmoji.length / 2
       this.loading = true;
-    }, this.picAmount)
-    this.mainButton.activateButton('Finish Game');
+      this.mainButton.activateButton('Finish Game');
+    }, this.pictureAmount)
   }
 
   ngOnDestroy() {
@@ -90,6 +91,16 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
           }, 1000)
         }
       }
+    }
+    if (this.winCount === this.pairsAmount) {
+      setTimeout(() => {
+        this.router.navigate(['final-screen', {
+          game: 'memory',
+          level: this.pictureAmount,
+          state: 'victory',
+          grid: this.gridRep
+        }])
+      }, 800)
     }
   }
 

@@ -47,7 +47,7 @@ export class HangmanPlaygroundComponent implements OnInit, OnDestroy {
     this.gallowsArray = this.getGameData.getData(hangmanClasses.hangman.gallows)
     this.loading = true;
     this.routeSub = this.route.params.subscribe(params => {
-      this.level = params['id'];
+      this.level = params['level'];
     })
 
     this.handleWord.getWord(

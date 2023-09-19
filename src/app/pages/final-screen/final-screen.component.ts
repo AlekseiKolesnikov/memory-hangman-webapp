@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {MainButtonSetting} from "../../utilit/telegram/main-button-setting";
+import {GameCheck} from "../../data/final-screen/game-check";
+import {IGameRouteParams} from "../../types/memory/game-route-params";
 
 @Component({
   selector: 'app-final-screen',
@@ -16,23 +18,31 @@ import {MainButtonSetting} from "../../utilit/telegram/main-button-setting";
 export class FinalScreenComponent implements OnInit, OnDestroy {
   public level: string;
   public state: string;
+  public grid: number;
+  public game: string;
   public showScreen: boolean = false;
   public showButtons: boolean = false;
+  private gameParams: IGameRouteParams;
 
   private routeSub: Subscription;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private mainButton: MainButtonSetting
-  ) { }
+    private mainButton: MainButtonSetting,
+    private gameCheck: GameCheck
+  ) {
+  }
 
   ngOnInit() {
     setTimeout(() => this.showButtons = true, 1500)
     this.mainButton.activateButton('Main Menu');
 
     this.routeSub = this.route.params.subscribe(params => {
+      this.game = params['game'];
       this.level = params['level'];
       this.state = params['state'];
+      this.grid = params['grid'];
     })
   }
 
@@ -42,21 +52,28 @@ export class FinalScreenComponent implements OnInit, OnDestroy {
   }
 
   click(isButton: string) {
+    this.gameParams = this.gameCheck.navigate(this.game)
     if (isButton === 'restart') {
-      this.router.navigate(['hangman-playground', {id: this.level}]);
+      this.router.navigate([`${this.gameParams.gameRoute}`, {
+        level: this.level,
+        grid: this.grid
+      }]);
     }
     if (isButton === 'change-levelData') {
-      this.router.navigate(['hangman-levels']);
+      this.router.navigate([`${this.gameParams.gameLevelRoute}`]);
     }
   }
 
   touch(event: Event, isButton: string) {
     event.preventDefault()
     if (isButton === 'restart') {
-      this.router.navigate(['hangman-playground', {id: this.level}]);
+      this.router.navigate([`${this.gameParams.gameRoute}`, {
+        level: this.level,
+        grid: this.grid
+      }]);
     }
     if (isButton === 'change-levelData') {
-      this.router.navigate(['hangman-levels']);
+      this.router.navigate([`${this.gameParams.gameLevelRoute}`]);
     }
   }
 }

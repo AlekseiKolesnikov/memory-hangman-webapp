@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, NgZone} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -6,7 +6,8 @@ import {Router} from "@angular/router";
 })
 export class MainButtonSetting {
   constructor(
-    private router: Router
+    private router: Router,
+    private zone: NgZone
   ) {
   }
 
@@ -17,7 +18,9 @@ export class MainButtonSetting {
     Telegram.WebApp.MainButton.setText(text)
     // @ts-ignore
     Telegram.WebApp.onEvent("mainButtonClicked", () => {
-      this.router.navigate(['game-choice']);
+      this.zone.run(() => {
+        this.router.navigate(['game-choice']);
+      })
       // @ts-ignore
       Telegram.WebApp.MainButton.hide();
     })

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from "@angular/core";
+import {Component, ViewEncapsulation} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,6 +14,6 @@ export class HangmanLevelsComponent {
   }
 
   onClick(level: string): void {
-    this.router.navigate(['hangman-playground', {id: level}]);
+    this.router.navigate(['hangman-playground', {level: level}]);
   }
 }

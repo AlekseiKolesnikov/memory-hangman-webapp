@@ -27,8 +27,8 @@ export class MemoryLevelsComponent implements OnInit {
     )
   }
 
-  onClick(picAmount: number, gridRep: number): void {
-    this.router.navigate(['memory-playground', {id: picAmount, grid: gridRep}])
+  onClick(pictureAmount: number, gridRep: number): void {
+    this.router.navigate(['memory-playground', {level: pictureAmount, grid: gridRep}])
   }
 
   gridStyle() {

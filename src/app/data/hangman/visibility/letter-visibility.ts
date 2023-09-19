@@ -37,14 +37,18 @@ export class LetterVisibility extends BodyVisibility {
 
     if (this.mismatchedCounter === bodyArray.length) {
       this.router.navigate(['final-screen', {
+        game: 'hangman',
         level: level,
-        state: 'defeat'
+        state: 'defeat',
+        grid: ''
       }])
     }
     if (this.matchedCounter === letterArray.length) {
       this.router.navigate(['final-screen', {
+        game: 'hangman',
         level: level,
-        state: 'victory'
+        state: 'victory',
+        grid: ''
       }])
     }
   }
