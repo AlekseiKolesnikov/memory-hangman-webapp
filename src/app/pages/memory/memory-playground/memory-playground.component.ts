@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {Card} from "../../../data/memory/card";
 import {GridStyle} from "../../../styles/grid/grid-style";
 import {Flip} from "../../../data/memory/card-state/flip";
+import {CardState} from "../../../data/memory/card-state/card-state";
 
 @Component({
   selector: 'app-memory-playground',
@@ -18,6 +19,11 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   gridRep: number
   loading: boolean = false;
   flipCard: Flip
+  cardState: CardState
+  firstCardIndex: number = 0;
+  secondCardIndex: number = 0;
+  pairsAmount: number = 0;
+  winCount: number = 0;
 
   private routeSub: Subscription;
 
@@ -26,6 +32,8 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
     private randomPicFilter: RandomPicFilter,
     private style: GridStyle
   ) {
+    this.flipCard = new Flip()
+    this.cardState = new CardState(false, false)
   }
 
   ngOnInit() {
@@ -36,14 +44,50 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
 
     this.randomPicFilter.getPic((data) => {
       this.randomEmoji = data
+      this.pairsAmount = this.randomEmoji.length / 2
       this.loading = true;
     }, this.picAmount)
-    this.flipCard.flip(false, false)
   }
 
   ngOnDestroy() {
     this.routeSub.unsubscribe()
     this.randomPicFilter.destroySubscription()
+    this.randomEmoji = [];
+  }
+
+  toggleFlip(index: number, cards: Card[]) {
+    if (!cards[index].getMatched()) {
+      if (!this.cardState.getFirstCardState()) {
+        this.firstCardIndex = index
+        this.cardState.updateFirstCardState(true)
+        cards[this.firstCardIndex].updateState('active')
+      } else {
+        this.secondCardIndex = index
+        this.cardState.updateSecondCardState(true)
+        cards[this.secondCardIndex].updateState('active')
+
+        const firstCard = cards[this.firstCardIndex]
+        const secondCard = cards[this.secondCardIndex]
+
+        if (firstCard.getEmoji() === secondCard.getEmoji() &&
+          this.firstCardIndex !== this.secondCardIndex) {
+          this.cardState.updateFirstCardState(false)
+          this.cardState.updateSecondCardState(false)
+          firstCard.updateMatched(true)
+          secondCard.updateMatched(true)
+          firstCard.updateState('active')
+          secondCard.updateState('active')
+          this.winCount += 1;
+        } else {
+          setTimeout(() => {
+            this.cardState.updateFirstCardState(false)
+            this.cardState.updateSecondCardState(false)
+            firstCard.updateState('inactive')
+            secondCard.updateState('inactive')
+          }, 1000)
+        }
+      }
+    }
   }
 
   gridStyle() {

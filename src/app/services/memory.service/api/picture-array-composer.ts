@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {IMemoryService} from "../../../types/memory/memory-service.type";
-import {Card} from "../../../data/memory/card";
 
 @Injectable({
   providedIn: 'root'

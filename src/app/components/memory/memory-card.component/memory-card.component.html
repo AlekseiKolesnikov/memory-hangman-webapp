@@ -1,9 +1,8 @@
 <div
   class="card-wrapper"
-  (click)="toggleFlip(cardIndex, cardsArray)"
 >
   <div
-    [@flipState]="flip"
+    [@flipState]="card.getState()"
     class="card"
   >
     <div class="front">

@@ -7,7 +7,7 @@ export class Card {
   constructor(
     private emoji: string,
     private backSideImg: string,
-    private flipped: boolean,
+    private state: string,
     private matched: boolean
   ) { }
 
@@ -27,11 +27,11 @@ export class Card {
     this.matched = newMatchState
   }
 
-  getFlipped(): boolean {
-    return this.flipped
+  getState(): string {
+    return this.state
   }
 
-  updateFlipped(newFlipped: boolean): void {
-    this.flipped = newFlipped
+  updateState(newFlipped: string): void {
+    this.state = newFlipped
   }
 }

@@ -1,22 +1,24 @@
+<div *ngIf="!loading">
+  <app-loader/>
+</div>
 <div
+  *ngIf="loading"
   class="game-container"
 >
-  <div *ngIf="!loading">
-    <app-loader/>
+  <div class="win-counter">
+    <span class="win-counter-text">Matching Counter: {{winCount}}/{{pairsAmount}}</span>
   </div>
 
-  <div
-    [ngStyle]="gridStyle()"
-    class="memory-playground"
-  >
-    <div
-      *ngFor="let item of randomEmoji; let currentIndex = index"
-    >
-      <app-memory-card
-        [card]="item"
-        [cardIndex]="currentIndex"
-        [cardsArray]="randomEmoji"
-      />
+  <div class="memory-playground">
+    <div [ngStyle]="gridStyle()">
+      <div
+        *ngFor="let item of randomEmoji; let currentIndex = index"
+      >
+        <app-memory-card
+          (click)="toggleFlip(currentIndex, randomEmoji)"
+          [card]="item"
+        />
+      </div>
     </div>
   </div>
 </div>

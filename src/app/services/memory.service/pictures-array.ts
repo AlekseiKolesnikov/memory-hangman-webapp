@@ -22,9 +22,9 @@ export class PicturesArray {
     return doubleArray.map<Card>((value) => {
       const emoji = value.character.toString()
       const backSide = '?'
+      const state = 'inactive'
       const matched = false
-      const flipped = false
-      return new Card(emoji, backSide, flipped, matched)
+      return new Card(emoji, backSide, state, matched)
     })
   }
 }

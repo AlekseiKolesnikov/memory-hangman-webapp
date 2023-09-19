@@ -1,3 +1,27 @@
+.game-container {
+  width: 95vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 
+.win-counter {
+  height: 5%;
+}
+
+.win-counter-text {
+  font-size: 18px;
+  font-family: "Tektur", cursive;
+}
+
+.memory-playground {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /*# sourceMappingURL=memory-playground.component.css.map */
