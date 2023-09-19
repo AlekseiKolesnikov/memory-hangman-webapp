@@ -6,6 +6,7 @@ import {Card} from "../../../data/memory/card";
 import {GridStyle} from "../../../styles/grid/grid-style";
 import {Flip} from "../../../data/memory/card-state/flip";
 import {CardState} from "../../../data/memory/card-state/card-state";
+import {MainButtonSetting} from "../../../utilit/telegram/main-button-setting";
 
 @Component({
   selector: 'app-memory-playground',
@@ -28,6 +29,7 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
 
   constructor(
+    private mainButton: MainButtonSetting,
     private route: ActivatedRoute,
     private randomPicFilter: RandomPicFilter,
     private style: GridStyle
@@ -47,6 +49,7 @@ export class MemoryPlaygroundComponent implements OnInit, OnDestroy {
       this.pairsAmount = this.randomEmoji.length / 2
       this.loading = true;
     }, this.picAmount)
+    this.mainButton.activateButton('Finish Game');
   }
 
   ngOnDestroy() {
